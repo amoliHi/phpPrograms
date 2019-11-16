@@ -1,4 +1,6 @@
 <?php
 require "FunctionsUtility.php";
+
 $object = new FunctionsUtility();
-$object->powerOfTwo();
+echo "Please enter he value of x and y cordinates below.\n";
+$object->cal_distance();

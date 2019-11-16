@@ -1,28 +1,29 @@
 <?php
-class Exam
-{
-static function vending_machine(){
-$amount=readline("Enter the amoutn: \n");
 
-$notesarray=array(1000,500,100,50,10,5,2,1);
-$countarray=array(0,0,0,0,0,0,0,0,0);
+class Questions {
 
-for($i=0;$i<=8;$i++){
-    if($amount >= $notesarray[$i]) 
-    { 
-        $countarray[$i] = intval($amount / $notesarray[$i]); 
-        $amount = $amount - $countarray[$i] * $notesarray[$i]; 
-    } 
-}
+   
+    function search($lo, $hi) {
+        if (($hi - $lo) === 1) 
+        return $lo;
+        $mid = $lo + ($hi - $lo) / 2;
+        $ans=readline("Is it less than $mid.\n"."Press 1 for yes and 0 for no");
+        if ($ans===1) 
+        return search($lo, $mid);
+        else                     
+        return search($mid, $hi);
+    }
 
-for($i=0;$i<8;$i++){
-    if($countarray[$i] != 0)  
-    { 
-      echo ($notesarray[$i]." : ".$countarray[$i]."\n"); 
-    } 
+    function take_input(){
+        $k = readline("Enter a numer.\n");
+        $n = abs(pow(2, $k));
+        echo "Think of a number between 0 and ".($k-1)."\n";
+        Questions::search(0, $n);
+        echo "Your number is: ". search();   
+    }
 }
-}
-}
+$obj = new Questions();
+$obj->take_input();
 
 //date("d-m-Y h:i:s"); 
 ?>

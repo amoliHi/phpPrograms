@@ -271,10 +271,9 @@ class FunctionsUtility
      */
  function get_Integerarray()
  {
-     echo "Enter the number of elements: \n";
-     $number=fscanf(STDIN, "%d\n", $number);
+     $number=readline("Enter the total number of elements: \n");
      $array=array();
-     echo "Enter the elements:\n";
+     echo "Now enter the elements:\n";
      for($i=0;$i< $number;$i++)
      {
          $array[$i]=readline();
@@ -300,6 +299,7 @@ class FunctionsUtility
             {
                 if($array[$i]+$array[$j]+$array[$k]===0)
                 {
+                    echo "Triplet found.\n";
                     echo $array[$i]." ".
                          $array[$j]." ".
                          $array[$k]." "."\n";
@@ -564,5 +564,19 @@ function coupon_number()
             $time_elapsed=($time1-$time);
             echo "Time elapsed is: ".$time_elapsed;
         } 
+    }
+
+
+    /**Write a program Distance.java that takes two integer command­line arguments x
+     *and y and prints the Euclidean distance from the point (x, y) to the origin (0, 0). The
+     *formulae to calculate distance = sqrt(x*x + y*y). Use Math.power function.
+     */
+    function cal_distance(){
+        $x=FunctionsUtility::get_Integer();
+        $y=FunctionsUtility::get_Integer();
+
+        $distance=sqrt(pow($x,2)+pow($y,2));
+        echo "The Euclidean distance is: ".$distance."\n";
+
     }
 }
