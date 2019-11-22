@@ -1,7 +1,4 @@
 <?php
-
-
-require "AlgorithmsUtility.php";
 /**
  * ListNode class for the linked list
  */
@@ -11,8 +8,7 @@ class ListNode
     public $next;
 
     /**
-     * __construct($data) function - for storing the data
-     * 
+     * __construct($data) function - for storing the data.
      */
     function __construct($data)
     {
@@ -68,6 +64,19 @@ class LinkedList
             $this->insertatStart($data);
     }
 
+    function add($data)
+    {
+        $temp = new ListNode($data);
+        if ($this->isEmpty()) {
+            $this->firstNode = $temp;
+            $this->firstNode->next = $this->lastNode;
+        } else {
+            $temp->next = $this->firstNode;
+            $this->firstNode = $temp;
+        }
+        $this->count++;
+    }
+
     /**
      *  isEmpty() function - to check if linked list is empty. 
      * 
@@ -112,7 +121,7 @@ class LinkedList
         return $listData;
     }
 
-/**
+    /**
      *  find($key) function - to read linked list and store it in an array. 
      *  @param $key - data passed by user to search in linked list.
      *  @return data
@@ -198,7 +207,6 @@ class LinkedList
 
     /**
      *  size() function - to get the complete size of linked list. 
-     *  
      */
     function size()
     {
@@ -211,8 +219,7 @@ class LinkedList
         if ($this->isEmpty()) {
             $this->firstNode = $temp;
             $this->firstNode->next = $this->lastNode;
-        }
-        else {
+        } else {
             $node = $this->firstNode;
             while ($node->next != null) {
                 $node = $node->next;
@@ -235,7 +242,7 @@ class LinkedList
                 return $data;
             }
             $node = $this->firstNode;
-        
+
             while ($node->next != null) {
                 $prev = $node;
                 $node = $node->next;
@@ -270,7 +277,7 @@ class LinkedList
             } else {
                 $counting = 0;
                 $node = $this->firstNode;
-               
+
                 while ($pos != $counting) {
                     $prev = $node;
                     $node = $node->next;
@@ -297,6 +304,33 @@ class LinkedList
         $s = substr($s, 0, -1);
         return $s . " }";
     }
+
+    function sortList()
+    {
+        //Node current will point to head  
+        $current = $this->firstNode;
+        $index = null;
+
+        if ($this->firstNode == null) {
+            return;
+        } else {
+            while ($current != null) {
+                //Node index will point to node next to current  
+                $index = $current->next;
+
+                while ($index != null) {
+                    //If current node's data is greater than index's node data, swap the data between them  
+                    if ($current->data > $index->data) {
+                        $temp = $current->data;
+                        $current->data = $index->data;
+                        $index->data = $temp;
+                    }
+                    $index = $index->next;
+                }
+                $current = $current->next;
+            }
+        }
+    }
 }
 
 class Stack
@@ -321,7 +355,7 @@ class Stack
         $this->stack[++$this->top] = $item;
         $this->size++;
     }
-/**
+    /**
      * function to delete data at the start of the stack
      * 
      */
@@ -408,39 +442,104 @@ class Queue
     }
 }
 
-class Calander{
+class Calander
+{
 
     // take input month and year from user
-function getInput()
-{
-    echo ("Enter the month : ");
-    $month = readline();
+    function getInput()
+    {
+        echo ("Enter the month : ");
+        $month = readline();
 
-    echo ("Enter the Year : ");
-    $year = readline();
+        echo ("Enter the Year : ");
+        $year = readline();
 
-    $months = array(
-        "", "January", "February", "March", "April", "May",
-        "June", "July", "August", "September", "October", "November", "December"
-    );
-    $algo=new AlgorithmsUtility();
-    $days = array(0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
-    if ($month == 2 && $algo->isLeapYear($year)) {
-        $days[$month] = 29;
-    }
-    echo $months[$month] . $year . "\n";
-    echo " Su Mo Tu We Th Fr Sa \n";
+        $months = array(
+            "", "January", "February", "March", "April", "May",
+            "June", "July", "August", "September", "October", "November", "December"
+        );
+        $algo = new BussinessLogic();
+        $days = array(0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+        if ($month == 2 && $algo->isLeapYear($year)) {
+            $days[$month] = 29;
+        }
+        echo $months[$month] . $year . "\n";
+        echo " Su Mo Tu We Th Fr Sa \n";
 
-    $d = $algo->day($month, 1, $year);
-    for ($i = 0; $i < $d; $i++) {
-        echo "   ";
-    }
-    for ($j = 1; $j <= $days[$month]; $j++) {
-        echo " ".$j;
-        if ((($j + $d) % 7 == 0) || ($j == $days[$month])) {
-            echo "\n";
+        $d = $algo->dayOfWeek($month, 1, $year);
+        for ($i = 0; $i < $d; $i++) {
+            echo "   ";
+        }
+        for ($j = 1; $j <= $days[$month]; $j++) {
+            echo " " . $j;
+            if ((($j + $d) % 7 == 0) || ($j == $days[$month])) {
+                echo "\n";
+            }
         }
     }
 }
 
+class Dequeue
+{
+    /**
+     * list to store the element and implement linked list
+     */
+    private $list;
+    /**
+     * Constructor function to initialize the list 
+     */
+    function __construct()
+    {
+        $this->list = new LinkedList();
+    }
+    /**
+     * function to push data at the end of the queue
+     * @param item the item to be pushed
+     */
+    function addRear($item)
+    {
+        $this->list->append($item);
+    }
+    /**
+     * function to push data at the start of the queue
+     * @param item the item to be pushed
+     */
+    function addFront($item)
+    {
+        $this->list->add($item);
+    }
+    /**
+     * Function to remove the item from the start of the list
+     */
+    function removeFront()
+    {
+        return $this->list->popPos(0);
+    }
+    /**
+     * Function to remove the item from the end of the list
+     */
+    function removeRear()
+    {
+        return $this->list->popPos($this->size() - 1);
+    }
+    /**
+     * Function to check if the queue is empty or not
+     * @return boolean true of false
+     */
+    function isEmpty()
+    {
+        return $this->list->isEmpty();
+    }
+    /**
+     * Function to check the size of queue
+     * @return size the size of the queue
+     */
+    function size()
+    {
+        return $this->list->size();
+    }
+    function __toString()
+    {
+        return $this->list->__toString();
+    }
 }
