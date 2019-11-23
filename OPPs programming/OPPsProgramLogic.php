@@ -1,12 +1,17 @@
 <?php
+
+/*require function of Utility class*/
 include "Utility.php";
 
+/*OPPsProgramLogic class - contains bussiness logic for programs 
+* included in OPPs programming assignment
+*/
 class OPPsProgramLogic
 {
     /**
-     * inventoryObject()-funtion to create the objects of the inventory and return it as an array of objects 
-     * 
-     * @return arr array of the objects 
+     * inventoryObject()-funtion to create the objects of the inventory and return 
+     * it as an array of objects.
+     * @return invenObject array object of inventory class 
      */
     function inventoryObject()
     {
@@ -25,56 +30,60 @@ class OPPsProgramLogic
     }
 
     /**
-     * Function to convert array to json string and put it in to the file.
+     * putJson($arr, $file)- function to convert array to json string and put it in to the file.
      * @param arr the array which to put
      * @param file the loction of the file to put it
      */
     function putJson($arr, $file)
     {
-        //converts to json string
+        //converts array to json string
         $json =  json_encode($arr);
-        //writing it in to the files
+        //writing json string into the files
         file_put_contents($file, $json);
     }
+
     /**
-     * function to read the json string from the file and return it as an array
+     * getJson($file) - function to read the json string from the file and return it as an array
      * 
      * @param file the location of the file to read the json string
      * @return arr the array we get from the jason string
      */
     function getJson($file)
     {
-        //saving the string from the files in the variable
+        //putting the json string from the files ot variable
         $contents = file_get_contents($file);
         //decoding the json string 
         $arr = json_decode($contents, true);
         //returning the decoded array
         return $arr;
     }
+
     /**
-     * Function to print the value from the program by calculating the price
+     * printValue($arr)- function to print individual product price as well as total inventory price
+     * 
+     * @param arr the location of the file to read the json string
+     * @return void
      */
-    function printValue($arr)
+    function printTotal($arr)
     {
-        //var to store the total price.
+        /**
+         * @var price for storing total price
+         */
         $price = 0;
-        //loop to go through the array
         for ($i = 0; $i < count($arr); $i++) {
             // calculating price of the single object
-            $tt = $arr[$i]['weight'] * $arr[$i]['price'];
-            echo "Total price for " . $arr[$i]['weight'] . " kg " . $arr[$i]['name'] . " is : " . $tt . "rs\n";
-            //adding to total prize
-            $price += $tt;
+            $singleobjprice = $arr[$i]['weight'] * $arr[$i]['price'];
+            echo "Total price for " . $arr[$i]['weight'] . " kg " . $arr[$i]['name'] . " is : " . $singleobjprice . "rs\n";
+            $price += $singleobjprice;
         }
-        //printing total price
         echo "Total Price of Inventory is : " . $price . "rs\n";
     }
     /**
-     * function to run and test the above program
+     * function to run program in JsonInventory.php
      */
     function jsonInventory()
     {
-        //file to save and get json from
+        //getting json file and putting it in variable
         $file = "Inventory.json";
         //getting array of oblect from the function
         $arr = OPPsProgramLogic::inventoryObject();
@@ -83,12 +92,20 @@ class OPPsProgramLogic
         //reading json from the file and decoding to array
         $jsonArr = OPPsProgramLogic::getJson($file);
         //printing the inventory
-        OPPsProgramLogic::printValue($jsonArr);
+        OPPsProgramLogic::printTotal($jsonArr);
     }
 
 
+
+    /**
+     * regexReplace($arr)- function to use Regex to replace name, full name, Mobile#, and Date
+     * in the given message by the user input values.
+     * 
+     * @return void
+     */
     function regexReplace()
     {
+
         $message = "Hello <<name>>, We have your full name as <<full name>> in our system. your contact number is 91-xxxxxxxxxx.\nPlease,let us know in case of any clarification.\nThank you\nBridgeLabz\nxx/xx/xxxx.";
         echo "Enter your First name:- \n";
         $fname = Utility::getString();
@@ -107,7 +124,7 @@ class OPPsProgramLogic
 }
 
 /**
- * inventory class with properties to create object for inventory
+ * Inventory class with properties to create object for inventory
  */
 class Inventory
 {
@@ -118,6 +135,10 @@ class Inventory
 
     /**
      * Constructor function to initialize the object properties
+     * @param name 
+     * @param weight 
+     * @param price 
+     * 
      */
     function __construct($name, $weight, $price)
     {
