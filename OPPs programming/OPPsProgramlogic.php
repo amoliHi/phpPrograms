@@ -1,7 +1,7 @@
 <?php
 include "Utility.php";
 
-class ProgramLogic
+class OPPsProgramLogic
 {
     /**
      * inventoryObject()-funtion to create the objects of the inventory and return it as an array of objects 
@@ -77,13 +77,13 @@ class ProgramLogic
         //file to save and get json from
         $file = "Inventory.json";
         //getting array of oblect from the function
-        $arr = ProgramLogic::inventoryObject();
+        $arr = OPPsProgramLogic::inventoryObject();
         //putting the array of object in the file as json
-        ProgramLogic::putJson($arr, $file);
+        OPPsProgramLogic::putJson($arr, $file);
         //reading json from the file and decoding to array
-        $jsonArr = ProgramLogic::getJson($file);
+        $jsonArr = OPPsProgramLogic::getJson($file);
         //printing the inventory
-        ProgramLogic::printValue($jsonArr);
+        OPPsProgramLogic::printValue($jsonArr);
     }
 }
 
