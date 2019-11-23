@@ -3,14 +3,15 @@
 /*require function of Utility class*/
 include "Utility.php";
 
-/*OPPsProgramLogic class - contains bussiness logic for programs 
-* included in OPPs programming assignment
+/* 
+* OPPsProgramLogic class - include bussiness logic of programs in OPPs programming assignment
 */
 class OPPsProgramLogic
 {
     /**
      * inventoryObject()-funtion to create the objects of the inventory and return 
      * it as an array of objects.
+     * 
      * @return invenObject array object of inventory class 
      */
     function inventoryObject()
@@ -94,8 +95,6 @@ class OPPsProgramLogic
         //printing the inventory
         OPPsProgramLogic::printTotal($jsonArr);
     }
-
-
 
     /**
      * regexReplace($arr)- function to use Regex to replace name, full name, Mobile#, and Date
