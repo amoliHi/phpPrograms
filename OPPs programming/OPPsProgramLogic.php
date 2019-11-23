@@ -1,6 +1,6 @@
 <?php
 
-/*require function of Utility class*/
+/*require functions of Utility class*/
 include "Utility.php";
 
 /* 
@@ -102,9 +102,18 @@ class OPPsProgramLogic
      * 
      * @return void
      */
-    function regexReplace()
+    function regexReplace($message,$fname,$lname,$mobile)
     {
 
+        
+        $message = preg_replace("/\d{2}\-x+/", $mobile, $message);
+        $message = preg_replace("/<+\w{4}>+/", $fname, $message);
+        $message = preg_replace("/<+\w+\s\w+>+/", $fname . " " . $lname, $message);
+        $message = preg_replace("/x*\/x*\/x*/", date("d/m/Y"), $message);
+        echo "\n$message\n";
+    }
+
+    function getUserInput(){
         $message = "Hello <<name>>, We have your full name as <<full name>> in our system. your contact number is 91-xxxxxxxxxx.\nPlease,let us know in case of any clarification.\nThank you\nBridgeLabz\nxx/xx/xxxx.";
         echo "Enter your First name:- \n";
         $fname = Utility::getString();
@@ -114,11 +123,11 @@ class OPPsProgramLogic
         while (strlen($mobile = Utility::getInt()) < 10) {
             echo "Please enter correct Mobile number:- \n";
         }
-        $message = preg_replace("/\d{2}\-x+/", $mobile, $message);
-        $message = preg_replace("/<+\w{4}>+/", $fname, $message);
-        $message = preg_replace("/<+\w+\s\w+>+/", $fname . " " . $lname, $message);
-        $message = preg_replace("/x*\/x*\/x*/", date("d/m/Y"), $message);
-        echo "\n$message\n";
+        OPPsProgramLogic::regexReplace($message,$fname,$lname,$mobile);
+    }
+
+    function regExDemonstration(){
+        OPPsProgramLogic::getUserInput();
     }
 }
 
