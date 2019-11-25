@@ -89,24 +89,24 @@ class Inventory
 /* 
 * Stock class - initializes the Stock classs object
 */
-// class Stock
-// {
-//     //varibles to store the data of stock
-//     public $name;
-//     public $price;
-//     public $quantity;
+class Stock
+{
+    //varibles to store the data of stock
+    public $name;
+    public $price;
+    public $quantity;
 
-//    /**
-//      * Constructor function to initialize the object properties
-//      * @param name 
-//      * @param price 
-//      * @param quantity 
-//      * 
-//      */
-//     function __construct($name, $price, $quantity)
-//     {
-//         $this->name = $name;
-//         $this->price = $price;
-//         $this->quantity = $quantity;
-//     }
-// }
+   /**
+     * Constructor function to initialize the object properties
+     * @param name 
+     * @param price 
+     * @param quantity 
+     * 
+     */
+    function __construct($name, $price, $quantity)
+    {
+        $this->name = $name;
+        $this->price = $price;
+        $this->quantity = $quantity;
+    }
+}
