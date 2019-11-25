@@ -1,6 +1,6 @@
 <?php
 
-//require teh files from the below files
+
 include("Utility.php");
 
 /**

@@ -1,4 +1,8 @@
 <?php
+
+/* 
+* Utility class - include logics common for programs in OPPs programming assignment
+*/
 class Utility
 {
     /**
@@ -9,9 +13,7 @@ class Utility
      */
     function validateString($str)
     {
-        /**condition for validating the type and size of user input string
-         *takes user input name as a parameter for validating with the set conditons
-         */
+        //condition for validating the type and size of user input string
         if (preg_match('/[a-zA-Z]/', $str)) {
             return true;
         }
@@ -40,7 +42,7 @@ class Utility
     static function getString()
     {
         $str = readline();
-        while(!Utility::validateString($str)){
+        while (!Utility::validateString($str)) {
             echo "Ivalid input enterd !!!!\nPlease try again.\n";
             $str = readline();
         }
@@ -67,16 +69,18 @@ class Utility
 */
 class Inventory
 {
-    /*variable to store name weight and price per kg of the object in inventory*/
+    /**
+     * variable to store name weight and price per kg of the object in inventory
+     */
     public $name;
     public $weight;
     public $price;
     /**
      * Constructor function to initialize the object properties
+     * 
      * @param name 
      * @param weight 
-     * @param price 
-     * 
+     * @param price  
      */
     function __construct($name, $weight, $price)
     {
@@ -91,12 +95,14 @@ class Inventory
 */
 class Stock
 {
-    //varibles to store the data of stock
+    /**
+     *varibles to store the data of stock
+     */
     public $name;
     public $price;
     public $quantity;
 
-   /**
+    /**
      * Constructor function to initialize the object properties
      * @param name 
      * @param price 
