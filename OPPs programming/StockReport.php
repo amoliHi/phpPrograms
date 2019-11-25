@@ -13,7 +13,7 @@
  * *********************************************************************************
  */
 
-//require functions in OPPsProgramLogic class
+//require functions of OPPsProgramLogic class
 include "OPPsProgramLogic.php";
 //calling Driver function
 OPPsProgramLogic::stockReport();

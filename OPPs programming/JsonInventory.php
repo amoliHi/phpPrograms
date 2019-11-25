@@ -14,7 +14,7 @@
  * **********************************************************************************
  */
 
-//require functions in OPPsProgramLogic class
+//require functions of OPPsProgramLogic class
 include "OPPsProgramLogic.php";
 $object = new OPPsProgramLogic();
 //calling Driver function

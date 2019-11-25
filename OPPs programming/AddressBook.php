@@ -9,8 +9,9 @@
  * *********************************************************************************
  */
 
-//require functions in OPPsProgramLogic class
+//require functions of OPPsProgramLogic class
 include "OPPsProgramLogic.php";
+
 //decoding json file and storing it's content in variable $arr
 $arr = json_decode(file_get_contents("AddressBook.json"));
 $obj = new OPPsProgramLogic();
