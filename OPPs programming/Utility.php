@@ -76,7 +76,7 @@ class Inventory
     public $weight;
     public $price;
     /**
-     * Constructor function to initialize the object properties
+     * Constructor function to initialize the object
      * 
      * @param name 
      * @param weight 
@@ -114,5 +114,29 @@ class Stock
         $this->name = $name;
         $this->price = $price;
         $this->quantity = $quantity;
+    }
+}
+
+/**
+ * class to initialize the property of the card with suit and rank
+ */
+class card
+{
+    /**
+     * variables to store properties of cards 
+     */
+    public $suit;
+    public $rank;
+
+    /**
+     * Constructor function to initialize the object
+     * 
+     * @param suit 
+     * @param rank 
+     */
+    function __construct($suit, $rank)
+    {
+        $this->suit = $suit;
+        $this->rank = $rank;
     }
 }
