@@ -35,7 +35,7 @@ class Utility
     /**
      * getString() function - takes string as an input form user.
      * 
-     * @return str -string
+     * @return $str -returns user entered string
      */
     static function getString()
     {
