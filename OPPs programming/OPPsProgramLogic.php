@@ -144,16 +144,40 @@ class OPPsProgramLogic
 		echo "Enter total number of Stocks: ";
 		$st = readline();
 		for ($i = 0; $i < $st; $i++) {
-			echo "Enter Stock name ";
+			echo "Enter Stock name :";
 			$name = readline();
-			echo "Enter number of Shares of $name ";
+			echo "Enter number of Shares of $name :";
 			$quantity = readline();
-			echo "Enter price of a share of $name ";
+			echo "Enter price of a share of $name :";
 			$price = readline();
 			$portfolio[] = new Stock($name, $price, $quantity);
 		}
 		OPPsProgramLogic::putJson($portfolio);
 	}
+
+	/**
+	 * stockReport() - function to take stock detail from user
+	 * 
+	 * @return void
+	 */
+	function stockReport()
+	{
+		echo "Enter total number of Stocks : ";
+		$st = readline();
+		for ($i = 0; $i < $st; $i++) {
+			echo "Enter Stock name :";
+			$name = readline();
+			echo "Enter number of Shares of $name :";
+			$quantity = readline();
+			echo "Enter price of a share of $name :";
+			$price = readline();
+			$portfolio[] = new Stock($name, $price, $quantity);
+		}
+		//call to printreport fucntion
+		OPPsProgramLogic::printStoRep($portfolio);
+	}
+
+	
 
 	 /**
      * putJson($arr, $file)- function to convert array to json string and put it in to the file.
