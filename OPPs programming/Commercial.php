@@ -43,10 +43,12 @@ function buy($account)
     fscanf(STDIN, "%s\n");
     return $account;
 }
+
 function saveList($list)
 {
     file_put_contents("stock.json", json_encode($list));
 }
+
 /**
  * function to sell the stock from the list
  */
@@ -74,11 +76,13 @@ function sell($account)
     fscanf(STDIN, "%s\n");
     return $account;
 }
+
 //function to save the stocks to the file
 function save($account)
 {
     file_put_contents("Account.json", json_encode($account));
 }
+
 //function to display the menu and run the program
 function menu($account)
 {

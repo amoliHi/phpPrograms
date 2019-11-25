@@ -1,6 +1,8 @@
 <?php
 
 /***********************************************************************************
+ * Stock Report:-
+ * 
  * a. Desc ­> Write a program to read in Stock Names, Number of Share, Share Price.
  * Print a Stock Report with total value of each Stock and the total value of Stock.
  * b. I/P ­> N number of Stocks, for Each Stock Read In the Share Name, Number of

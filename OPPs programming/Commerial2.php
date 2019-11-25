@@ -1,9 +1,9 @@
 <?php
 
 //require teh files from the below files
-require("/home/bridgelabz/Chirag/BridgeLabzPHP/DataStructure/Stack.php");
-require("/home/bridgelabz/Chirag/BridgeLabzPHP/DataStructure/Queue.php");
-require_once("/home/bridgelabz/Chirag/BridgeLabzPHP/DataStructure/Node.php");
+require("DataStructure/Stack.php");
+require("DataStructure/Queue.php");
+require_once("DataStructure/Node.php");
 require("Utility.php");
 /**
  * function to get valid integer from the console
@@ -157,7 +157,7 @@ function sell($stockacc)
  */
 function save($stockacc)
 {
-    file_put_contents("Account2.json", json_encode($stockacc));
+    file_put_contents("Account.json", json_encode($stockacc));
 }
 //function to display the menu and run the program
 function menu($stockacc)
@@ -290,7 +290,7 @@ function fixCast(&$destination, $source)
     }
 }
 //checking the user account
-$stockacc = json_decode(file_get_contents("Account2.json"), true);
+$stockacc = json_decode(file_get_contents("Account.json"), true);
 if ($stockacc == null) {
     $stockacc = new StockAccount();
 } else {
