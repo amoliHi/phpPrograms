@@ -12,7 +12,7 @@ class OPPsProgramLogic
 	 * inventoryObject()-funtion to create the objects of the inventory and return 
 	 * it as an array of objects.
 	 * 
-	 * @return invenObject array object of inventory class 
+	 * @return invenObject array object of inventory class containing product detail
 	 */
 	function inventoryObject()
 	{
@@ -36,7 +36,7 @@ class OPPsProgramLogic
 	 * getJson($file) - function to read the json string from the file and return it as an array
 	 * 
 	 * @param file -the location of the file to read the json string
-	 * @return arr -the array we get from the jason string
+	 * @return arr -contain json string
 	 */
 	function getJson($file)
 	{
@@ -51,7 +51,7 @@ class OPPsProgramLogic
 	/**
 	 * printValue($arr) -function to print individual product price as well as total inventory price
 	 * 
-	 * @param arr -the location of the file to read the json string
+	 * @param arr -contain json string
 	 * @return void
 	 */
 	function printInvenTotal($arr)
@@ -81,7 +81,7 @@ class OPPsProgramLogic
 		//getting array of oblect from the function
 		$arr = OPPsProgramLogic::inventoryObject();
 		//putting the array of object in the file as json
-		OPPsProgramLogic::putJson($arr, $file);
+		Utility::putJsonin($arr, $file);
 		//reading json from the file and decoding to array
 		$jsonArr = OPPsProgramLogic::getJson($file);
 		//printing the inventory

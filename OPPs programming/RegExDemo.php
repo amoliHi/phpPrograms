@@ -18,7 +18,6 @@
 
 //require functions in OPPsProgramLogic class
 require "OPPsProgramLogic.php";
-
 $object=new OPPsProgramLogic();
 //calling Driver function
 $object->regExDemonstration();

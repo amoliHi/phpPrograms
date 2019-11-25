@@ -23,12 +23,12 @@ class Utility
     }
 
     /**
-     * putJson($arr, $file)- function to convert array to json string and put it in to the file.
+     * putJsonin($arr, $file)- function to convert array to json string and put it in to the file.
      *
      * @param arr -the array which to put
      * @param file -the loction of the file to put it
      */
-    static function putJson($arr, $file)
+    static function putJsonin($arr, $file)
     {
         //converts array to json string
         $json =  json_encode($arr);

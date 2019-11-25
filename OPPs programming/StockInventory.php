@@ -1,5 +1,4 @@
 <?php
-
 /********************************************************************************
  * Inventory Management Program-:
  * a. Desc ­> Extend the above program to Create InventoryManager to manage the
