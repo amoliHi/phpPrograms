@@ -1,30 +1,8 @@
 <?php
 
-/**
- * program that can be used to maintain an address book. An address book holds a collection of entries,
- * each recording a person's first and last names, address, city, state, zip, and phone number.
- * 
- * @author chiragkatare
- */
-//files containing important function
+
 require("Utility.php");
-/**
- * function to validate integer input from the user and ask the user until proper input is fount and return it
- * @param int the value to verify as int
- * @param min the minimum value of the integer
- * @param max the maximum value of the integer
- * @return int the valid int in that range 
- * 
- */
-function validInt($int, $min, $max)
-{
-    while (filter_var($int, FILTER_VALIDATE_INT, array("options" => array("min_range" => $min, "max_range" => $max))) === false) {
-        echo ("Variable value is not within the legal range\n");
-        echo "enter again : ";
-        $int = Utility::getInt();
-    }
-    return $int;
-}
+
 /**
  * class person containing properties of person for address book
  */
