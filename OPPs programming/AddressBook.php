@@ -8,8 +8,8 @@
 
 //require functions in OPPsProgramLogic class
 include "OPPsProgramLogic.php";
-
-$obj=new OPPsProgramLogic();
+//decoding json file and storing it's content in variable $arr
 $arr = json_decode(file_get_contents("AddressBook.json"));
+$obj=new OPPsProgramLogic();
 //calling Driver function
 $obj->addressbkmenu($arr);
