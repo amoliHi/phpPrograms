@@ -1,14 +1,5 @@
 <?php
-/**
- * set top level error handler function to handle in case of error occurence
- * 
- */
-set_error_handler(function ($errno, $errstr, $error_file, $error_line) {
-    echo "!!!!Error Occured!!!!!!!\n";
-    echo "Error: [$errno] $errstr - $error_file:$error_line \n";
-    echo "Terminating!!!!!!!!!\n";
-    die();
-});
+
 //require teh files from the below files
 require("/home/bridgelabz/Chirag/BridgeLabzPHP/DataStructure/Stack.php");
 require("/home/bridgelabz/Chirag/BridgeLabzPHP/DataStructure/Queue.php");
@@ -49,8 +40,8 @@ class StockAccount
     public $account;
     public $stack;
     public $queue;
-    
-    public function __construct($account = [],$stack = [], $queue =[])
+
+    public function __construct($account = [], $stack = [], $queue = [])
     {
         $this->account = $account;
         $this->stack = $stack;
@@ -108,8 +99,8 @@ function buy($stockacc)
         if ($account[$i]->name == $stock->name) {
             $account[$i]->quantity += $stock->quantity;
             echo "Bought $stock->quantity " . "$stock->name shares successfully";
-            $stack[]= ($account[$ch - 1]->name . " bought");
-            $queue[]=("$amnt " . $account[$ch - 1]->name . "shares bought at " . date("h:i:s D d/m/y"));
+            $stack[] = ($account[$ch - 1]->name . " bought");
+            $queue[] = ("$amnt " . $account[$ch - 1]->name . "shares bought at " . date("h:i:s D d/m/y"));
             $stockacc->account = $account;
             $stockacc->stack = $stack;
             $stockacc->queue = $queue;
@@ -119,8 +110,8 @@ function buy($stockacc)
     //or else adds the new stack the end pf the list
     $account[] = $stock;
     echo "Bought $stock->quantity " . "$stock->name shares successfully";
-    $stack[]=(" bought");
-    $queue[]=($amnt . " " . $stock->name . " shares bought at " . date("h:i:s D d/m/y"));
+    $stack[] = (" bought");
+    $queue[] = ($amnt . " " . $stock->name . " shares bought at " . date("h:i:s D d/m/y"));
     //waiting for user to see the result
     fscanf(STDIN, "%s\n");
     $stockacc->account = $account;
@@ -146,8 +137,8 @@ function sell($stockacc)
     $qt = validInt(Utility::getInt(), 1, $account[$ch - 1]->quantity);
     //removing the stock
     $account[$ch - 1]->quantity -= $qt;
-    $stack[]=($account[ch - 1]->name . " sold");
-    $queue[]=($account[ch - 1]->name . " shares sold at " . date("h:i:s D d/m/y"));
+    $stack[] = ($account[ch - 1]->name . " sold");
+    $queue[] = ($account[ch - 1]->name . " shares sold at " . date("h:i:s D d/m/y"));
     print_r($stack);
     print_r($queue);
     echo "sold $qt shares successfully";
@@ -197,7 +188,7 @@ function menu($stockacc)
             break;
         default:
             echo "press 1 to save";
-            if (Utility::getInt() == 1) { 
+            if (Utility::getInt() == 1) {
                 //var_dump($account); 
                 save($stockacc);
                 echo "Transaction saved\n";
@@ -212,7 +203,7 @@ function menu($stockacc)
 function report($stockacc)
 {
     $account = $stockacc->account;
-        // /    var_dump($portfolio);
+    // /    var_dump($portfolio);
     $total = 0;
     echo "Stock Name | Per Share Price | No. Of Shares | Stock Price\n";
     foreach ($account as $key) {
@@ -227,9 +218,9 @@ function transactions($queue)
 {
     echo "Transaction History :\n";
     foreach ($queue as $key) {
-        echo $key."\n";
+        echo $key . "\n";
     }
-    echo"\n enter to Menu\n";
+    echo "\n enter to Menu\n";
     fscanf(STDIN, "%s\n");
 }
 //function to print the stock currently in the stock
@@ -299,14 +290,12 @@ function fixCast(&$destination, $source)
     }
 }
 //checking the user account
-$stockacc = json_decode(file_get_contents("Account2.json") , true );
-if($stockacc==null){
+$stockacc = json_decode(file_get_contents("Account2.json"), true);
+if ($stockacc == null) {
     $stockacc = new StockAccount();
-}
-else{
-    $stockacc = new StockAccount($stockacc["account"] ,$stockacc["stack"],$stockacc["queue"]);
+} else {
+    $stockacc = new StockAccount($stockacc["account"], $stockacc["stack"], $stockacc["queue"]);
 }
 // var_dump($stack);
- //transactions($stockacc->queue);
+//transactions($stockacc->queue);
 menu($stockacc);
-?>

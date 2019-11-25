@@ -430,14 +430,14 @@ class OPPsProgramLogic
 						break;
 				}
 				if ($k == 1)
-				OPPsProgramLogic::addressbkmenu($addressBook);
+					OPPsProgramLogic::addressbkmenu($addressBook);
 				else
 					$addressbook[$i] = OPPsProgramLogic::edit($addressBook[$i]);
-					OPPsProgramLogic::addressbkmenu($addressBook);
+				OPPsProgramLogic::addressbkmenu($addressBook);
 				break;
 			case '3':
-			OPPsProgramLogic::delete($addressBook);
-			OPPsProgramLogic::addressbkmenu($addressBook);
+				OPPsProgramLogic::delete($addressBook);
+				OPPsProgramLogic::addressbkmenu($addressBook);
 				break;
 			case '4':
 				echo "Enter 1 to sort by Name\nEnter 2 to sort by Zip\nElse to Menu";
@@ -449,7 +449,7 @@ class OPPsProgramLogic
 					OPPsProgramLogic::sortBook($addressBook, "zip");
 					OPPsProgramLogic::printBook($addressBook);
 				} else
-				OPPsProgramLogic::addressbkmenu($addressBook);
+					OPPsProgramLogic::addressbkmenu($addressBook);
 				fscanf(STDIN, "%s\n");
 				OPPsProgramLogic::addressbkmenu($addressBook);
 				break;
@@ -467,7 +467,7 @@ class OPPsProgramLogic
 			default:
 				echo "Enter 1 to save ";
 				if (Utility::getInt() == 1)
-				OPPsProgramLogic::save($addressBook);
+					OPPsProgramLogic::save($addressBook);
 				break;
 		}
 	}
