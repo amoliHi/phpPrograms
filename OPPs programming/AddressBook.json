@@ -1,0 +1,20 @@
+[
+    {
+        "fname": "Jagjeet",
+        "lname": "Singh",
+        "address": "houser no. 3",
+        "city": "jabalpur",
+        "state": "kolhapur",
+        "zip": "123456",
+        "phone": "7896635241"
+    },
+    {
+        "fname": "Hello",
+        "lname": "kUMAR",
+        "address": "hello house",
+        "city": "hellocity",
+        "state": "Hellopur",
+        "zip": "123456",
+        "phone": "1234567891"
+    }
+]

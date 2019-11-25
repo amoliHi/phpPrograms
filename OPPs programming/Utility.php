@@ -1,25 +1,50 @@
 <?php
 class Utility
-{ 
+{
+    /**
+     * validateUserName($name) function - for verifying the type and lenght of user input name. 
+     *
+     * @param [string] $name
+     * @return boolean 
+     */
+    function validateString($str)
+    {
+        /**condition for validating the type and size of user input string
+         *takes user input name as a parameter for validating with the set conditons
+         */
+        if (preg_match('/[a-zA-Z]/', $str)) {
+            return true;
+        }
+    }
+
     /**
      * getInt() function - takes integer as an input form user.
+     * 
      * @return integer
-     *
      */
     static function getInt()
     {
-        $number = readline();
-        return $number;
+        $num = readline();
+        while (!is_numeric($num)) {
+            echo "Ivalid input enterd !!!!\nPlease try again.\n";
+            $num = readline();
+        }
+        return $num;
     }
+
     /**
-     * getString() function - takes string input form user.
-     * @return string
-     *
+     * getString() function - takes string as an input form user.
+     * 
+     * @return str -string
      */
     static function getString()
     {
-        $name = readline();
-        return $name;
+        $str = readline();
+        while(!Utility::validateString($str)){
+            echo "Ivalid input enterd !!!!\nPlease try again.\n";
+            $str = readline();
+        }
+        return $str;
     }
 
     /**
@@ -64,25 +89,24 @@ class Inventory
 /* 
 * Stock class - initializes the Stock classs object
 */
-class Stock
-{
-    //varibles to store the data of stock
-    public $name;
-    public $price;
-    public $quantity;
+// class Stock
+// {
+//     //varibles to store the data of stock
+//     public $name;
+//     public $price;
+//     public $quantity;
 
-   /**
-     * Constructor function to initialize the object properties
-     * @param name 
-     * @param price 
-     * @param quantity 
-     * 
-     */
-    function __construct($name, $price, $quantity)
-    {
-        $this->name = $name;
-        $this->price = $price;
-        $this->quantity = $quantity;
-    }
-}
-
+//    /**
+//      * Constructor function to initialize the object properties
+//      * @param name 
+//      * @param price 
+//      * @param quantity 
+//      * 
+//      */
+//     function __construct($name, $price, $quantity)
+//     {
+//         $this->name = $name;
+//         $this->price = $price;
+//         $this->quantity = $quantity;
+//     }
+// }

@@ -1,1 +1,22 @@
-[{"name":"Rice","weight":"100","price":"21"},{"name":"Wheat","weight":"200","price":"20"},{"name":"Pulses","weight":"500","price":"25"},{"name":"gOOGLE","price":"10","quantity":"2"},{"name":"Amazon","price":"10","quantity":"2"},{"name":"Google","price":"10","quantity":"2"},{"name":"Amazon","price":"20","quantity":"3"}]
+[
+    {
+        "name": "gOOGLE",
+        "price": "10",
+        "quantity": "2"
+    },
+    {
+        "name": "Amazon",
+        "price": "10",
+        "quantity": "2"
+    },
+    {
+        "name": "Google",
+        "price": "10",
+        "quantity": "2"
+    },
+    {
+        "name": "Amazon",
+        "price": "20",
+        "quantity": "3"
+    }
+]
