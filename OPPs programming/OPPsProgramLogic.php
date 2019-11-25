@@ -30,19 +30,7 @@ class OPPsProgramLogic
 		return $invenObject;
 	}
 
-	/**
-	 * putJson($arr, $file)- function to convert array to json string and put it in to the file.
-	 *
-	 * @param arr -the array which to put
-	 * @param file -the loction of the file to put it
-	 */
-	function putJson($arr, $file)
-	{
-		//converts array to json string
-		$json =  json_encode($arr);
-		//writing json string into the files
-		file_put_contents($file, $json);
-	}
+
 
 	/**
 	 * getJson($file) - function to read the json string from the file and return it as an array
@@ -110,7 +98,7 @@ class OPPsProgramLogic
 	 * @return void
 	 * 
 	 */
-	function regexReplace($message,$fname,$lname,$mobile)
+	function regexReplace($message, $fname, $lname, $mobile)
 	{
 		$message = preg_replace("/\d{2}\-x+/", $mobile, $message);
 		$message = preg_replace("/<+\w{4}>+/", $fname, $message);
@@ -119,17 +107,16 @@ class OPPsProgramLogic
 		echo "\n$message\n";
 	}
 
-	function regExDemonstration(){
+	function regExDemonstration()
+	{
 		$message = "Hello <<name>>, We have your full name as <<full name>> in our system. your contact number is 91-xxxxxxxxxx.\nPlease,let us know in case of any clarification.\nThank you\nBridgeLabz\nxx/xx/xxxx.";
 		echo "Enter your First name:- \n";
 		$fname = Utility::getString();
 		echo "Enter your Last name:- \n";
 		$lname = Utility::getString();
 		echo "Enter your mobile no:- \n";
-		while (strlen($mobile = Utility::getInt()) < 10) {
-			echo "Please enter correct Mobile number:- \n";
-		}
-		OPPsProgramLogic::regexReplace($message,$fname,$lname,$mobile);
+		$mobile = Utility::getInt();
+		OPPsProgramLogic::regexReplace($message, $fname, $lname, $mobile);
 	}
 
 	/**
@@ -138,87 +125,100 @@ class OPPsProgramLogic
 	 * @param file - the location of the file to read the json string
 	 * @return void
 	 */
-function add($file)
-{
-	echo "Adding new Stock data to inventory.... \n";
-	$portfolio = json_decode(file_get_contents($file));
-	OPPsProgramLogic::portfolio($portfolio,$file);
-}
+	function add()
+	{
+		echo "Adding new Stock data to inventory.... \n";
+		$portfolio = json_decode(file_get_contents("stock.json"));
+		OPPsProgramLogic::portfolio($portfolio);
+	}
 
-/**
+	/**
 	 * portfolio($portfolio,$file) - function to add stock to old portfolio 
 	 * 
 	 * @param portfolio -stock inventory array object containing Stock data 
 	 * @param file -the location of .json file
 	 * @return void
 	 */
-function portfolio($portfolio,$file)
-{
-	echo "Enter total number of Stocks: ";
-	$st = readline();
-	for ($i = 0; $i < $st; $i++) {
-		echo "Enter Stock name ";
-		$name = readline();
-		echo "Enter number of Shares of $name ";
-		$quantity = readline();
-		echo "Enter price of a share of $name ";
-		$price = readline();
-		$portfolio[] = new Inventory($name, $price, $quantity);
+	function portfolio($portfolio)
+	{
+		echo "Enter total number of Stocks: ";
+		$st = readline();
+		for ($i = 0; $i < $st; $i++) {
+			echo "Enter Stock name ";
+			$name = readline();
+			echo "Enter number of Shares of $name ";
+			$quantity = readline();
+			echo "Enter price of a share of $name ";
+			$price = readline();
+			$portfolio[] = new Stock($name, $price, $quantity);
+		}
+		OPPsProgramLogic::putJson($portfolio);
 	}
-	OPPsProgramLogic::putJson($portfolio,$file);
-}
 
-/**
- * printStoRep($portfolio) - Function to read and print the string from json file
- *
- * @param portfolio - stock inventory array object containing Stock data
- * @return void
- */
-function printStoRep($portfolio)
-{
-	$total = 0;
-	echo "Stock Name | Per Share Price | No. Of Shares | Stock Price \n";
-	foreach ($portfolio as $key) {
-		echo sprintf("%-10s | rs %-12u | %-13u | rs %u", 
-			$key->name, $key->price, $key->quantity, ($key->quantity * $key->price))."\n";
-		$total += ($key->quantity * $key->price);
+	 /**
+     * putJson($arr, $file)- function to convert array to json string and put it in to the file.
+     *
+     * @param arr -the array which to put
+     * @param file -the loction of the file to put it
+     */
+    function putJson($arr)
+    {
+        //converts array to json string
+        $json =  json_encode($arr);
+        //writing json string into the files
+        file_put_contents("stock.json", $json);
+    }
+
+	/**
+	 * printStoRep($portfolio) - Function to read and print the string from json file
+	 *
+	 * @param portfolio - stock inventory array object containing Stock data
+	 * @return void
+	 */
+	function printStoRep($portfolio)
+	{
+		$total = 0;
+		echo "Stock Name | Per Share Price | No. Of Shares | Stock Price \n";
+		foreach ($portfolio as $key) {
+			echo sprintf("%-10s | rs %-12u | %-13u | rs %u",$key->name,$key->price,$key->quantity,
+				($key->quantity * $key->price)) . "\n";
+			$total += ($key->quantity * $key->price);
+		}
+		echo "Total Value Of Stocks is : " . $total . " rs\n";
 	}
-	echo "Total Value Of Stocks is : " . $total . " rs\n";
-}
 
-/**
- * stockInventory($file) - function to run and test the above functions 
- *
- * @param file -stock inventory object containing Stock data 
- * @return void 
- */
-function stockInventory($file)
-{
-	//take user input
-	echo "Press 1 to Enter New Details in Stock Portfolio. \nPress 2 to to clear and create new Portfolio. \n";
-	echo "Enter 3 to display old Shares with Report.\nElse exit anything to exit. \n";
-	$choice = readline();
-	//switch case to run as per user choice
-	switch ($choice) {
-		case '1':
-		OPPsProgramLogic::add($file);
-		echo "\n\n";
-		OPPsProgramLogic::stockInventory($file);
-		break;
-		case '2':
-		OPPsProgramLogic::newPort();
-		echo "\n\n";
-		OPPsProgramLogic::stockInventory($file);
-		break;
-		case '3':
-		$portfolio = json_decode(file_get_contents($file));
-printStoRep($portfolio);
-readline();
-break;
-default:
-echo "Exit complete.... \n";
-break;
+	/**
+	 * stockInventory($file) - function to run and test the above functions 
+	 *
+	 * @param file -stock inventory object containing Stock data 
+	 * @return void 
+	 */
+	function stockInventory()
+	{
+		//take user input
+		echo "Press 1 to Enter New Details in Stock Portfolio. \nPress 2 to display old Shares with Report. \n";
+		echo  "Else exit anything to exit. \n";
+		$choice = readline();
+		//switch case to run as per user choice
+		switch ($choice) {
+			case '1':
+				OPPsProgramLogic::add();
+				echo "\n\n";
+				OPPsProgramLogic::stockInventory();
+				break;
+			// case '2':
+			// 	OPPsProgramLogic::newPort();
+			// 	echo "\n\n";
+			// 	OPPsProgramLogic::stockInventory();
+			// 	break;
+			case '2':
+				$portfolio = json_decode(file_get_contents("stock.json"));
+				OPPsProgramLogic::printStoRep($portfolio);
+				readline();
+				break;
+			default:
+				echo "Exit complete.... \n";
+				break;
+		}
+	}
 }
-}
-}
-
