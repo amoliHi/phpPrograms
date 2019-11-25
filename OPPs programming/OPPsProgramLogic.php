@@ -251,9 +251,6 @@ class OPPsProgramLogic
 		}
 	}
 
-
-
-
 	/**
 	 * createPerson($addressBook) function to create person objest by the input provided by user
 	 * 
