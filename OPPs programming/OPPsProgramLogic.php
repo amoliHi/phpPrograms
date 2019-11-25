@@ -30,8 +30,6 @@ class OPPsProgramLogic
 		return $invenObject;
 	}
 
-
-
 	/**
 	 * getJson($file) - function to read the json string from the file and return it as an array
 	 * 
@@ -96,7 +94,6 @@ class OPPsProgramLogic
 	 * @param fname - contains first name of user
 	 * @param lname - contains last name of user
 	 * @return void
-	 * 
 	 */
 	function regexReplace($message, $fname, $lname, $mobile)
 	{
@@ -407,7 +404,6 @@ class OPPsProgramLogic
 		file_put_contents("AddressBook.json", json_encode($addressBook));
 	}
 
-
 	/**
 	 * addressbkmenu($addressBook) -driver function
 	 * 
@@ -421,8 +417,8 @@ class OPPsProgramLogic
 		$ch = Utility::getInt();
 		switch ($ch) {
 			case '1':
-				createPerson($addressBook);
-				addressbkmenu($addressBook);
+				OPPsProgramLogic::createPerson($addressBook);
+				OPPsProgramLogic::addressbkmenu($addressBook);
 				break;
 			case '2':
 				$k = 2;
@@ -434,44 +430,44 @@ class OPPsProgramLogic
 						break;
 				}
 				if ($k == 1)
-					addressbkmenu($addressBook);
+				OPPsProgramLogic::addressbkmenu($addressBook);
 				else
-					$addressbook[$i] = edit($addressBook[$i]);
-				addressbkmenu($addressBook);
+					$addressbook[$i] = OPPsProgramLogic::edit($addressBook[$i]);
+					OPPsProgramLogic::addressbkmenu($addressBook);
 				break;
 			case '3':
-				delete($addressBook);
-				addressbkmenu($addressBook);
+			OPPsProgramLogic::delete($addressBook);
+			OPPsProgramLogic::addressbkmenu($addressBook);
 				break;
 			case '4':
 				echo "Enter 1 to sort by Name\nEnter 2 to sort by Zip\nElse to Menu";
 				$c = Utility::getInt();
 				if ($c == 1) {
-					sortBook($addressBook, "fname");
-					printBook($addressBook);
+					OPPsProgramLogic::sortBook($addressBook, "fname");
+					OPPsProgramLogic::printBook($addressBook);
 				} else if ($c == 2) {
-					sortBook($addressBook, "zip");
-					printBook($addressBook);
+					OPPsProgramLogic::sortBook($addressBook, "zip");
+					OPPsProgramLogic::printBook($addressBook);
 				} else
-					addressbkmenu($addressBook);
+				OPPsProgramLogic::addressbkmenu($addressBook);
 				fscanf(STDIN, "%s\n");
-				addressbkmenu($addressBook);
+				OPPsProgramLogic::addressbkmenu($addressBook);
 				break;
 			case '5':
-				$i = search($addressBook);
+				$i = OPPsProgramLogic::search($addressBook);
 				if ($i > -1) {
 					$arr = [];
 					$arr[] = $addressBook[$i];
-					printBook($arr);
+					OPPsProgramLogic::printBook($arr);
 				}
 				echo "\n";
 				fscanf(STDIN, "%s\n");
-				addressbkmenu($addressBook);
+				OPPsProgramLogic::addressbkmenu($addressBook);
 				break;
 			default:
 				echo "Enter 1 to save ";
 				if (Utility::getInt() == 1)
-					save($addressBook);
+				OPPsProgramLogic::save($addressBook);
 				break;
 		}
 	}
