@@ -632,8 +632,10 @@ class OPPsProgramLogic
 	 * @param playerQue containing queue data of players
 	 * @return void 
 	 */
-	function showCards($playerQue)
+	function showCards()
 	{
+		$playerQue = getDeck();
+		$playerQue = playerDist($playerQue);
 		while ($playerQue->isEmpty() == false) {
 			$pl = $playerQue->dequeue();
 			echo $pl . "-{";
@@ -664,4 +666,46 @@ class Person
 	public $zip;
 	//var phone to store the phone no of the person 
 	public $phone;
+}
+
+/**
+ * Player class to initialize queue object of players and create queue of cards
+ * and add cards to players
+ */
+class Player
+{
+	//variables to take card data
+	public $name;
+	public $cards;
+
+	function __tostring()
+	{
+		return $this->name;
+	}
+
+	/**
+	 * Function to initialize 
+	 */
+	function __construct($name)
+	{
+		$this->cards = new Queue();
+		$this->name = $name;
+	}
+
+	/**
+	 * Function to add cards to players deck
+	 * 
+	 * @param card card object of queue having card data
+	 */
+	function pushCard($card)
+	{
+		$this->cards->enqueue($card);
+	}
+
+	function sortDeck()
+	{
+		while ($this->cards->isEmpty() === false) {
+			$ar[] = $this->cards->dequeue();
+		}
+	}
 }
