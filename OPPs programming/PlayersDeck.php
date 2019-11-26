@@ -3,24 +3,40 @@
 //require the functions in below files to work
 require("Utility.php");
 require("/home/admin1/Downloads/Amoli/BridgeLabzProgram-master/Data Structure/DataStructureUtility.php");
-
+/**
+ * Player class to initialize queue object of players and create queue of cards
+ * and add cards to players
+ */
 class Player
 {
+    //variables to take card data
     public $name;
     public $cards;
+
     function __tostring()
     {
         return $this->name;
     }
+
+    /**
+     * Function to initialize 
+     */
     function __construct($name)
     {
         $this->cards = new Queue();
         $this->name = $name;
     }
+
+    /**
+     * Function to add cards to players deck
+     * 
+     * @param card card object of queue having card data
+     */
     function pushCard($card)
     {
         $this->cards->enqueue($card);
     }
+
     function sortDeck()
     {
         while ($this->cards->isEmpty() === false) {
@@ -98,6 +114,13 @@ class Player
 //     return $deck;
 // }
 //*******************************
+
+/**
+ * Function to take player name as input and create a queue of players
+ * 
+ * @param deck containing cards data in the form of 2d array
+ * @return playerQue queue of players with player and cards data
+ */
 function playerDist($deck)
 {
     $playerQue = new Queue();
@@ -115,7 +138,14 @@ function playerDist($deck)
     }
     return $playerQue;
 }
-function showCards(Queue $playerQue)
+
+/**
+ * Driver function of PlayersDeck program 
+ * 
+ * @param playerQue containing queue data of players
+ * @return void 
+ */
+function showCards($playerQue)
 {
     while ($playerQue->isEmpty() == false) {
         $pl = $playerQue->dequeue();
