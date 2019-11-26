@@ -115,47 +115,7 @@ class Player
 // }
 //*******************************
 
-/**
- * Function to take player name as input and create a queue of players
- * 
- * @param deck containing cards data in the form of 2d array
- * @return playerQue queue of players with player and cards data
- */
-function playerDist($deck)
-{
-    $playerQue = new Queue();
-    for ($i = 1; $i < 5; $i++) {
-        echo "Enter player $i name ";
-        $name = Utility::getString();
-        $player = new Player($name);
-        for ($j = 0; $j < 9; $j++) {
-            $r = rand(0, 3);
-            $c = rand(0, count($deck[$r]) - 1);
-            $player->pushCard($deck[$r][$c]);
-            array_splice($deck[$r], $c, 1);
-        }
-        $playerQue->enqueue($player);
-    }
-    return $playerQue;
-}
 
-/**
- * Driver function of PlayersDeck program 
- * 
- * @param playerQue containing queue data of players
- * @return void 
- */
-function showCards($playerQue)
-{
-    while ($playerQue->isEmpty() == false) {
-        $pl = $playerQue->dequeue();
-        echo $pl . "-{";
-        while ($pl->cards->isEmpty() == false) {
-            echo $pl->cards->dequeue() . ",";
-        }
-        echo "}\n\n";
-    }
-}
 $ss = getDeck();
 $ss = playerDist($ss);
 showCards($ss);
