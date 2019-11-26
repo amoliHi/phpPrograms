@@ -638,7 +638,7 @@ class OPPsProgramLogic
 		$playerQue = OPPsProgramLogic::playerDist($playerQue);
 		while ($playerQue->isEmpty() == false) {
 			$pl = $playerQue->dequeue();
-			echo $pl . "-{";
+			echo $pl . "-->{";
 			while ($pl->cards->isEmpty() == false) {
 				echo $pl->cards->dequeue() . ",";
 			}
