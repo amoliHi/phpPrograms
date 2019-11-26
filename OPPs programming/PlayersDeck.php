@@ -3,35 +3,6 @@
 //require the functions in below files to work
 require("Utility.php");
 require("/home/admin1/Downloads/Amoli/BridgeLabzProgram-master/Data Structure/DataStructureUtility.php");
-/**
- * clss to initialize the property of the card with suit and rank
- */
-class card
-{
-    /**
-     * variables to store properties of cars 
-     */
-    public $suit;
-    public $rank;
-    /**
-     * constructor of class 
-     */
-    function __construct($suit, $rank)
-    {
-        $this->suit = $suit;
-        $this->rank = $rank;
-    }
-    /**
-     * toString method is overidden to output the object as string
-     */
-    function __tostring(){
-        $special = ["Jack", "Queen", "King", "Ace"];
-        if($this->rank>10){
-            return $special[$this->rank%11]." of ".$this->suit  ;
-        }
-        return $this->rank." of ".$this->suit  ;
-    }
-}
 
 class Player
 {
@@ -40,7 +11,7 @@ class Player
     function __tostring(){
         return $this->name;
     }
-    function __construct(string $name)
+    function __construct($name)
     {
         $this->cards = new Queue();
         $this->name = $name;
@@ -107,7 +78,8 @@ function playerDist($deck)
     $playerQue = new Queue();
     for ($i = 1; $i < 5; $i++) {
         echo "Enter player $i name ";
-        $player = new Player(Utility::getString());
+        $name=Utility::getString();
+        $player = new Player($name);
         for ($j=0; $j < 9 ; $j++) { 
             $r = rand(0, 3);
             $c = rand(0, count($deck[$r]) - 1);

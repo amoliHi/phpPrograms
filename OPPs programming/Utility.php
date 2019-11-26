@@ -139,7 +139,16 @@ class card
         $this->suit = $suit;
         $this->rank = $rank;
     }
+
+    /**
+     * toString method is overidden to output the object as string
+     */
+    function __tostring()
+    {
+        $special = ["Jack", "Queen", "King", "Ace"];
+        if ($this->rank > 10) {
+            return $special[$this->rank % 11] . " of " . $this->suit;
+        }
+        return $this->rank . " of " . $this->suit;
+    }
 }
-
-
-
