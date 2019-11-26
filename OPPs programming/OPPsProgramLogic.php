@@ -168,7 +168,9 @@ class OPPsProgramLogic
 	function stockReport()
 	{
 		echo "Enter total number of Stocks : ";
+		//var st for storing total number of stock
 		$st = readline();
+		//loop for traversing and taking stock data from user
 		for ($i = 0; $i < $st; $i++) {
 			echo "Enter Stock name :";
 			$name = readline();
@@ -176,6 +178,7 @@ class OPPsProgramLogic
 			$quantity = readline();
 			echo "Enter price of a share of $name :";
 			$price = readline();
+			//storing stock data taken form user in portfolio array
 			$portfolio[] = new Stock($name, $price, $quantity);
 		}
 		//call to printreport fucntion
@@ -189,7 +192,7 @@ class OPPsProgramLogic
 	 */
 	function putJson($arr)
 	{
-		//converts array to json string
+		//encoding array to json string
 		$json =  json_encode($arr);
 		//storing json string into the files
 		file_put_contents("stock.json", $json);
@@ -203,8 +206,10 @@ class OPPsProgramLogic
 	 */
 	function printStoRep($portfolio)
 	{
+		//var total for storing total value of stock
 		$total = 0;
 		echo "Stock Name | Per Share Price | No. Of Shares | Stock Price \n";
+		//loop for travesing and printing stock data
 		foreach ($portfolio as $key) {
 			echo sprintf(
 				"%-10s | rs %-12u | %-13u | rs %u",
@@ -219,7 +224,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * Function to run and test the above functions 
+	 * Driver function for StockInventory program 
 	 *
 	 * @param file -stock inventory object containing Stock data 
 	 * @return void 
