@@ -105,6 +105,7 @@ function createPatient()
     $Patient->age = Utility::getInt();
     //adding Doctor information to the array $doctor_arr
     $patient_arr[] = $Patient;
+    Utility::putJsonin($patient_arr, $file);
 }
 
 function clinicMgmt($file)
