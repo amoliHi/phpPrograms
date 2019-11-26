@@ -54,8 +54,8 @@ class Utility
     /**
      * putJsonin($arr, $file)- function to convert array to json string and put it in to the file.
      *
-     * @param arr -the array which to put
-     * @param file -the loction of the file to put it
+     * @param arr the array which to put
+     * @param file the loction of the file to put it
      */
     static function putJsonin($arr, $file)
     {
