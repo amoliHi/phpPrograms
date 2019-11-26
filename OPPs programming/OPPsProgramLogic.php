@@ -9,7 +9,7 @@ include "Utility.php";
 class OPPsProgramLogic
 {
 	/**
-	 * inventoryObject()-funtion to create the objects of the inventory and return 
+	 * Funtion to create the objects of the inventory and return 
 	 * it as an array of objects.
 	 * 
 	 * @return invenObject array object of inventory class containing product detail
@@ -31,10 +31,9 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * getJson($file) - function to read the json string from the file and return it as an array
+	 * Function to read the json string from the file and return it as an array
 	 * 
 	 * @param file -the location of the file to read the json string
-	 * @return arr -contain json string
 	 */
 	function getJson($file)
 	{
@@ -47,7 +46,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * printValue($arr) -function to print individual product price as well as total inventory price
+	 * Function to print individual product price as well as total inventory price
 	 * 
 	 * @param arr -contain json string
 	 * @return void
@@ -68,7 +67,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * jsonInventory() -function to run program in JsonInventory.php
+	 * Function to run program in JsonInventory.php
 	 *
 	 * @return void
 	 */
@@ -87,7 +86,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * regexReplace$message,$fname,$lname,$mobile)- function to use regEx to replace name, full name, Mobile#, and Date
+	 * Function to use regEx to replace name, full name, Mobile#, and Date
 	 * in the given message by the user input values.
 	 *
 	 * @param message -contains message to be changed
@@ -105,9 +104,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * regExDemonstration() - driver function
-	 *
-	 * @return void
+	 * Driver function of RegExDemo program
 	 */
 	function regExDemonstration()
 	{
@@ -122,9 +119,8 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * add() -function to add stock to old port folio 
+	 * Function to add stock to old port folio 
 	 * 
-	 * @param file -the location of the file to read the json string
 	 * @return void
 	 */
 	function add()
@@ -135,10 +131,9 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * portfolio($portfolio,$file) - function to add stock to old portfolio 
+	 * Function to add stock to old portfolio 
 	 * 
 	 * @param portfolio -stock inventory array object containing Stock data 
-	 * @param file -the location of .json file
 	 * @return void
 	 */
 	function portfolio($portfolio)
@@ -158,7 +153,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * stockReport() - function to take stock detail from user
+	 * Function to take stock detail from user
 	 * 
 	 * @return void
 	 */
@@ -180,10 +175,9 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * putJson($arr, $file)- function to convert array to json string and put it in to the file.
+	 * Function to convert array to json string and put it in to the file.
 	 *
 	 * @param arr -the array which to put
-	 * @param file -the loction of the file to put it
 	 */
 	function putJson($arr)
 	{
@@ -194,7 +188,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * printStoRep($portfolio) - Function to read and print the string from json file
+	 * Function to read and print the string from json file
 	 *
 	 * @param portfolio - stock inventory array object containing Stock data
 	 * @return void
@@ -217,7 +211,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * stockInventory($file) - function to run and test the above functions 
+	 * Function to run and test the above functions 
 	 *
 	 * @param file -stock inventory object containing Stock data 
 	 * @return void 
@@ -252,7 +246,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * createPerson($addressBook) function to create person objest by the input provided by user
+	 * Function to create person objest by the input provided by user
 	 * 
 	 * @param addressbook the array of addressbook to store created person object
 	 * @return void
@@ -281,7 +275,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * edit($person) function to edit the details of a person
+	 * Function to edit the details of a person
 	 * 
 	 * @param person helps to call the person class variables
 	 */
@@ -312,7 +306,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * delete($arr) function to delete the object of person from the array
+	 * Function to delete the object of person from the array
 	 * 
 	 * @param arr array from which object is to be deleted
 	 */
@@ -329,7 +323,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * search($arr) function tosearch the array for specific person and return the index 
+	 * Function tosearch the array for specific person and return the index 
 	 * of person or -1 if not found
 	 * 
 	 * @param arr array in which to search for person object
@@ -352,7 +346,9 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 *  printBook($arr) function to print person details from AddressBook
+	 *  Function to print person details from AddressBook
+	 * 
+	 * @param arr array containing the data about person
 	 */
 	function printBook($arr)
 	{
@@ -371,7 +367,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * sortBook($arr, $prop) -function to sort the array by person object property
+	 * Function to sort the array by person object property
 	 * 
 	 * @param $arr -the array containig person object to sort
 	 * @param  $prop -the property for which to sort
@@ -392,7 +388,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * save($addressBook) -function to save passed $addressBook in json file
+	 * Function to save passed $addressBook in json file
 	 * 
 	 * @param addressBook -the array containing the person object and to be stored in json file
 	 */
@@ -402,7 +398,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * addressbkmenu($addressBook) -driver function
+	 * Driver function of AddressBook program
 	 * 
 	 * @param addressBook -the array containing the person object/details
 	 */
@@ -492,7 +488,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * Shuffle the deck of cards and returns it
+	 * Function to shuffle the deck of cards and returns it
 	 * 
 	 * @param deck the 2d array containing deck of cards
 	 * @return deck the shuffled deck of cards
@@ -518,7 +514,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * Distribute the deck of cards between 4 players
+	 * Function to distribute the deck of cards between 4 players
 	 *    
 	 * @param deck the deck of cards 2d array(Shuffled)
 	 * @return players the 2d array of distributed cards
@@ -538,7 +534,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * Sort the player distributed cards and return it
+	 * Function to sort the player distributed cards and return it
 	 * 
 	 * @param player the 2d array containing the distributed cards
 	 * @return player the sorted distributed cards
