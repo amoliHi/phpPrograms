@@ -505,15 +505,17 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * Function to shuffle the deck of cards and returns it
+	 * Function to shuffle the deck of cards and then return it
 	 * 
 	 * @param deck the 2d array containing deck of cards
 	 * @return deck the shuffled deck of cards
 	 */
 	function shufflecard($deck)
 	{
+		//card shuffling logic
 		for ($i = 0; $i < count($deck); $i++) {
 			for ($j = 0; $j < count($deck[$i]); $j++) {
+				//generating random numbers
 				$r1 = rand(0, 3);
 				$c1 = rand(0, 12);
 				$r = rand(0, count($deck));
@@ -521,6 +523,8 @@ class OPPsProgramLogic
 				$r = rand(0, count($deck));
 				$c2 = rand(0, 12);
 				$r = rand(0, count($deck));
+				//swapping data of deck array
+				//using random numbers as index in array
 				$temp = $deck[$r1][$c1];
 				$r = rand(0, count($deck));
 				$deck[$r1][$c1] = $deck[$r2][$c2];
@@ -538,7 +542,10 @@ class OPPsProgramLogic
 	 */
 	function distribute($deck)
 	{
+		//creating empty array for storing distributed cards
 		$players = [];
+		//logic for distributing cards between 4 players
+		//4 players will have 9 cards of different suits and rank from deck
 		for ($i = 0; $i < 4; $i++) {
 			for ($j = 0; $j < 9; $j++) {
 				$r = rand(0, 3);
