@@ -89,8 +89,6 @@ function createPatient($patient_arr)
     $patient_arr[] = $Patient;
 }
 
-$doctor_arr = json_decode("CliniqueMgmt.txt");
-
 function clinicMgmt(){
     echo "\n ....Clinique Management Book....\n\nEnter 1 to add Person Data.\nEnter 2 to Edit a person.",
     "\nEnter 3 to Delete a person.\nEnter 4 to Sort and Display.\nEnter 5 to search.",
@@ -98,7 +96,7 @@ function clinicMgmt(){
 $ch = Utility::getInt();
 switch ($ch) {
     case '1':
-        OPPsProgramLogic::createPerson($addressBook);
+    detailentry($addressBook);
         OPPsProgramLogic::addressbkmenu($addressBook);
         break;
     case '2':
@@ -154,3 +152,5 @@ switch ($ch) {
 }
 
 }
+$doctor_arr = json_decode("CliniqueMgmt.txt");
+clinicMgmt();
