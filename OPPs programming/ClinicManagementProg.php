@@ -92,5 +92,65 @@ function createPatient($patient_arr)
 $doctor_arr = json_decode("CliniqueMgmt.txt");
 
 function clinicMgmt(){
+    echo "\n ....Clinique Management Book....\n\nEnter 1 to add Person Data.\nEnter 2 to Edit a person.",
+    "\nEnter 3 to Delete a person.\nEnter 4 to Sort and Display.\nEnter 5 to search.",
+    "\nEnter any other number to save and exit.\n";
+$ch = Utility::getInt();
+switch ($ch) {
+    case '1':
+        OPPsProgramLogic::createPerson($addressBook);
+        OPPsProgramLogic::addressbkmenu($addressBook);
+        break;
+    case '2':
+        $k = 2;
+        while (($i = search($addressBook)) === -1) {
+            var_dump($i);
+            echo "No enteries Found\nenter 1 to exit to Menu or Else to search again\n";
+            fscanf(STDIN, "%s\n", $k);
+            if ($k == 1)
+                break;
+        }
+        if ($k == 1)
+            OPPsProgramLogic::addressbkmenu($addressBook);
+        else
+            $addressbook[$i] = OPPsProgramLogic::edit($addressBook[$i]);
+        OPPsProgramLogic::addressbkmenu($addressBook);
+        break;
+    case '3':
+        OPPsProgramLogic::delete($addressBook);
+        OPPsProgramLogic::addressbkmenu($addressBook);
+        break;
+    case '4':
+        echo "Enter 1 to sort by Name\nEnter 2 to sort by Zip\nElse to Menu";
+        $c = Utility::getInt();
+        if ($c == 1) {
+            OPPsProgramLogic::sortBook($addressBook, "fname");
+            OPPsProgramLogic::printBook($addressBook);
+        } else if ($c == 2) {
+            OPPsProgramLogic::sortBook($addressBook, "zip");
+            OPPsProgramLogic::printBook($addressBook);
+        } else
+            OPPsProgramLogic::addressbkmenu($addressBook);
+        fscanf(STDIN, "%s\n");
+        OPPsProgramLogic::addressbkmenu($addressBook);
+        break;
+    case '5':
+        $i = OPPsProgramLogic::search($addressBook);
+        if ($i > -1) {
+            $arr = [];
+            $arr[] = $addressBook[$i];
+            OPPsProgramLogic::printBook($arr);
+        }
+        echo "\n";
+        fscanf(STDIN, "%s\n");
+        OPPsProgramLogic::addressbkmenu($addressBook);
+        break;
+    default:
+        echo "Enter 1 to save ";
+        if (Utility::getInt() == 1)
+            OPPsProgramLogic::save($addressBook);
+        break;
+}
+}
 
 }
