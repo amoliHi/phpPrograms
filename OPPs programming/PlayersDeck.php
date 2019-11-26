@@ -34,48 +34,48 @@ class Player
  * 
  * @return deck the 2d array of the deck 
  */
-function getDeck()
-{
-    //no of suits in the deck
-    $suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
-    //no of ranks in the deck
-    $rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-    //deck array  wth the empty value
-    //storing cards in deck
-    $deck = [];
-    for ($i = 0; $i < count($suits); $i++) {
-        for ($j = 0; $j < count($rank); $j++) {
-            //giving the values of cards in the deck array
-            $deck[$i][$j] = new card($suits[$i], $rank[$j]);
-        }
-    }
-    return $deck;
-}
+// function getDeck()
+// {
+//     //no of suits in the deck
+//     $suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
+//     //no of ranks in the deck
+//     $rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+//     //deck array  wth the empty value
+//     //storing cards in deck
+//     $deck = [];
+//     for ($i = 0; $i < count($suits); $i++) {
+//         for ($j = 0; $j < count($rank); $j++) {
+//             //giving the values of cards in the deck array
+//             $deck[$i][$j] = new card($suits[$i], $rank[$j]);
+//         }
+//     }
+//     return $deck;
+// }
 
 /**
  * shuffle the deck of cards and return it
  * @param deck the 2d array containing deck of cards
  * @return deck the shuffled deck of cards
  */
-function cardShuffle($deck)
-{
-    for ($i = 0; $i < count($deck); $i++) {
-        for ($j = 0; $j < count($deck[$i]); $j++) {
-            $r1 = rand(0, 3);
-            $c1 = rand(0, 12);
-            $r = rand(0, count($deck));
-            $r2 = rand(0, 3);
-            $r = rand(0, count($deck));
-            $c2 = rand(0, 12);
-            $r = rand(0, count($deck));
-            $temp = $deck[$r1][$c1];
-            $r = rand(0, count($deck));
-            $deck[$r1][$c1] = $deck[$r2][$c2];
-            $deck[$r2][$c2] = $temp;
-        }
-    }
-    return $deck;
-}
+// function cardShuffle($deck)
+// {
+//     for ($i = 0; $i < count($deck); $i++) {
+//         for ($j = 0; $j < count($deck[$i]); $j++) {
+//             $r1 = rand(0, 3);
+//             $c1 = rand(0, 12);
+//             $r = rand(0, count($deck));
+//             $r2 = rand(0, 3);
+//             $r = rand(0, count($deck));
+//             $c2 = rand(0, 12);
+//             $r = rand(0, count($deck));
+//             $temp = $deck[$r1][$c1];
+//             $r = rand(0, count($deck));
+//             $deck[$r1][$c1] = $deck[$r2][$c2];
+//             $deck[$r2][$c2] = $temp;
+//         }
+//     }
+//     return $deck;
+// }
 
 // function cardShuffle($deck)
 // {

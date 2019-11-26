@@ -585,17 +585,17 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * Driver function for DeckOfCards program 
+	 * Driver function of DeckOfCards program 
 	 */
 	function runDeck()
 	{
-		echo "Deck of cards \n";
+		echo "Deck of cards created.\nPress Enter the proceed.\n";
 		fscanf(STDIN, "%s\n");
 		$deck = OPPsProgramLogic::createDeck();
-		echo "enter to shuffle \n";
+		echo "Press Enter to shuffle the deck. \n";
 		fscanf(STDIN, "%s\n");
 		$deck = OPPsProgramLogic::shufflecard($deck);
-		echo "Enter to distribute";
+		echo "Press Enter to distribute the cards among players.\n";
 		fscanf(STDIN, "%s\n");
 		$players = OPPsProgramLogic::distribute($deck);
 		$players = OPPsProgramLogic::sortPlayer($players);
