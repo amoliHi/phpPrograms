@@ -115,7 +115,7 @@ function playerDist($deck)
     }
     return $playerQue;
 }
-function ShowCards(Queue $playerQue)
+function showCards(Queue $playerQue)
 {
     while ($playerQue->isEmpty() == false) {
         $pl = $playerQue->dequeue();
@@ -128,4 +128,4 @@ function ShowCards(Queue $playerQue)
 }
 $ss = getDeck();
 $ss = playerDist($ss);
-ShowCards($ss);
+showCards($ss);
