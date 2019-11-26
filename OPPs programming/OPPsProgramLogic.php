@@ -253,7 +253,6 @@ class OPPsProgramLogic
 	 */
 	function createPerson($addressBook)
 	{
-
 		//@var person to store the object of Person class
 		$person = new Person();
 		echo "Enter Firstname : \n";
