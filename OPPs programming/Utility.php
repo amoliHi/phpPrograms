@@ -27,6 +27,7 @@ class Utility
     static function getInt()
     {
         $num = readline();
+        //validating if the input provide is numeric or not
         while (!is_numeric($num)) {
             echo "Ivalid input enterd !!!!\nPlease try again.\n";
             $num = readline();
@@ -35,13 +36,14 @@ class Utility
     }
 
     /**
-     * getString() function - takes string as an input form user.
-     * 
-     * @return $str -returns user entered string
+     * Function to take string input from user
+     *
+     * @return $str returns user entered string
      */
     static function getString()
     {
         $str = readline();
+        //validating input string
         while (!Utility::validateString($str)) {
             echo "Ivalid input enterd !!!!\nPlease try again.\n";
             $str = readline();
@@ -69,11 +71,11 @@ class Utility
 */
 class Inventory
 {
-    /**
-     * variable to store name weight and price per kg of the object in inventory
-     */
+    //@var name to store name of product
     public $name;
+    //@var name to store weight of product
     public $weight;
+    //@var name to store price of product
     public $price;
     /**
      * Constructor function to initialize the object
@@ -95,11 +97,12 @@ class Inventory
 */
 class Stock
 {
-    /**
-     *varibles to store the data of stock
-     */
+
+    //var name to store name of product
     public $name;
+    //var price to store price of product
     public $price;
+    //var quantity to store quantity of product
     public $quantity;
 
     /**
