@@ -17,7 +17,9 @@ class OPPsProgramLogic
 	function inventoryObject()
 	{
 		$name = array("Rice", "Wheat", "Pulses");
+		//creating empty array to store inventory details
 		$invenObject = array();
+		//loop for traversing and taking product details as input
 		for ($i = 0; $i < 3; $i++) {
 			echo "Enter total weight of " . $name[$i] . " in kg" . "\n";
 			$weight = readline();
@@ -53,14 +55,13 @@ class OPPsProgramLogic
 	 */
 	function printInvenTotal($arr)
 	{
-		/**
-		 * @var price for storing total price
-		 */
+		//var price for storing total price
 		$price = 0;
 		for ($i = 0; $i < count($arr); $i++) {
 			// calculating price of the single object
 			$singleobjprice = $arr[$i]['weight'] * $arr[$i]['price'];
 			echo "Total price for " . $arr[$i]['weight'] . " kg " . $arr[$i]['name'] . " is : " . $singleobjprice . "rs\n";
+			//calculating total price of all inventory objects
 			$price += $singleobjprice;
 		}
 		echo "Total Price of Inventory is : " . $price . "rs\n";
@@ -96,10 +97,12 @@ class OPPsProgramLogic
 	 */
 	function regexReplace($message, $fname, $lname, $mobile)
 	{
+		//replacing matched content with user provided input
 		$message = preg_replace("/\d{2}\-x+/", $mobile, $message);
 		$message = preg_replace("/<+\w{4}>+/", $fname, $message);
 		$message = preg_replace("/<+\w+\s\w+>+/", $fname . " " . $lname, $message);
 		$message = preg_replace("/x*\/x*\/x*/", date("d/m/Y"), $message);
+		//print modified message
 		echo "\n$message\n";
 	}
 
@@ -110,28 +113,32 @@ class OPPsProgramLogic
 	{
 		$message = "Hello <<name>>, We have your full name as <<full name>> in our system. your contact number is 91-xxxxxxxxxx.\nPlease,let us know in case of any clarification.\nThank you\nBridgeLabz\nxx/xx/xxxx.";
 		echo "Enter your First name:- \n";
+		//var fname will hold user first name
 		$fname = Utility::getString();
 		echo "Enter your Last name:- \n";
+		//var lname will hold user last name
 		$lname = Utility::getString();
 		echo "Enter your mobile no:- \n";
+		//var mobile will hold user mobile number
 		$mobile = Utility::getInt();
 		OPPsProgramLogic::regexReplace($message, $fname, $lname, $mobile);
 	}
 
 	/**
-	 * Function to add stock to old port folio 
+	 * Function to add stock to old portfolio 
 	 * 
 	 * @return void
 	 */
 	function add()
 	{
 		echo "Adding new Stock data to inventory.... \n";
+		//var portfolio will hold decoded json string
 		$portfolio = json_decode(file_get_contents("stock.json"));
 		OPPsProgramLogic::portfolio($portfolio);
 	}
 
 	/**
-	 * Function to add stock to old portfolio 
+	 * Function to add stock data to old portfolio 
 	 * 
 	 * @param portfolio -stock inventory array object containing Stock data 
 	 * @return void
@@ -140,6 +147,7 @@ class OPPsProgramLogic
 	{
 		echo "Enter total number of Stocks: ";
 		$st = readline();
+		//loop for traversing and taking stock data form user
 		for ($i = 0; $i < $st; $i++) {
 			echo "Enter Stock name :";
 			$name = readline();
@@ -153,7 +161,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * Function to take stock detail from user
+	 * Function to take stock detail from user for new portfolio
 	 * 
 	 * @return void
 	 */
@@ -177,13 +185,13 @@ class OPPsProgramLogic
 	/**
 	 * Function to convert array to json string and put it in to the file.
 	 *
-	 * @param arr -the array which to put
+	 * @param arr array which is to be put in json file
 	 */
 	function putJson($arr)
 	{
 		//converts array to json string
 		$json =  json_encode($arr);
-		//writing json string into the files
+		//storing json string into the files
 		file_put_contents("stock.json", $json);
 	}
 

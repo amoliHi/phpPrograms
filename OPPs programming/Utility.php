@@ -125,10 +125,9 @@ class Stock
  */
 class card
 {
-    /**
-     * variables to store properties of cards 
-     */
+    //var suit to store category of card
     public $suit;
+    //var rank to store rank of card
     public $rank;
 
     /**
