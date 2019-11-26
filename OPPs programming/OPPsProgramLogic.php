@@ -231,24 +231,20 @@ class OPPsProgramLogic
 	 */
 	function stockInventory()
 	{
-		//take user input
 		echo "Press 1 to Enter New Details in Stock Portfolio. \nPress 2 to display old Shares with Report. \n";
 		echo  "Else exit anything to exit. \n";
 		$choice = readline();
-		//switch case to run as per user choice
+		//taking user input and accordingly control will work
 		switch ($choice) {
 			case '1':
 				OPPsProgramLogic::add();
 				echo "\n\n";
 				OPPsProgramLogic::stockInventory();
 				break;
-				// case '2':
-				// 	OPPsProgramLogic::newPort();
-				// 	echo "\n\n";
-				// 	OPPsProgramLogic::stockInventory();
-				// 	break;
 			case '2':
+			//var portfolio for storing json string
 				$portfolio = json_decode(file_get_contents("stock.json"));
+				//call to print the stock report
 				OPPsProgramLogic::printStoRep($portfolio);
 				readline();
 				break;
@@ -259,16 +255,18 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * Function to create person objest by the input provided by user
+	 * Function to create person object by the input provided by user
 	 * 
 	 * @param addressbook the array of addressbook to store created person object
 	 * @return void
 	 */
 	function createPerson($addressBook)
 	{
-		//@var person to store the object of Person class
+		//@var person object of class Person
 		$person = new Person();
 		echo "Enter Firstname : \n";
+		//in below steps calling variables from class Person using class object
+		//taking user input to initialize class Person variables
 		$person->fname = Utility::getString();
 		echo "Enter Lastname : \n";
 		$person->lname = Utility::getString();
@@ -282,7 +280,7 @@ class OPPsProgramLogic
 		$person->address = Utility::getString();
 		echo "Enter Mobile Number : \n";
 		$person->phone = Utility::getInt();
-		//adding person information to the array $addressBook
+		//adding person information to addressBook array
 		$addressBook[] = $person;
 	}
 
@@ -294,6 +292,7 @@ class OPPsProgramLogic
 	function edit($person)
 	{
 		echo "Enter 1 to change Address.\nEnter 2 change Mobile Number.\n";
+		//taking user input and accordingly control will work
 		$choice = Utility::getInt();
 		switch ($choice) {
 			case '1':
@@ -324,18 +323,19 @@ class OPPsProgramLogic
 	 */
 	function delete($arr)
 	{
-		//@var $i stores the index number returned by serach($arr) function
+		//@var i stores the index number returned by serach($arr) function
 		$i = search($arr);
 		if ($i > -1) {
+			//remove elements from an array $arr and replace it with new element
 			array_splice($arr, $i, 1);
 			echo "Entry Deleted\n";
 		} else
-			echo "Entry Not Found\n";
+			echo "Entry Not Found\nPress Enter to proceed.\n";
 		fscanf(STDIN, "%s\n");
 	}
 
 	/**
-	 * Function tosearch the array for specific person and return the index 
+	 * Function to search the array for specific person and return the index 
 	 * of person or -1 if not found
 	 * 
 	 * @param arr array in which to search for person object
@@ -347,6 +347,7 @@ class OPPsProgramLogic
 		$fname = Utility::getString();
 		echo "Enter last name : \n";
 		$lname = Utility::getString();
+		//loop for traversing and searching person details in array as per user input
 		for ($i = 0; $i < count($arr); $i++) {
 			if ($arr[$i]->fname == $fname) {
 				if ($arr[$i]->lname == $lname) {
@@ -364,6 +365,7 @@ class OPPsProgramLogic
 	 */
 	function printBook($arr)
 	{
+		// printing addressbook
 		foreach ($arr as $person) {
 			echo sprintf(
 				"%s %s\n%s\n%s, %s\nZip - %u\nMobile- %u\n\n",
@@ -381,15 +383,15 @@ class OPPsProgramLogic
 	/**
 	 * Function to sort the array by person object property
 	 * 
-	 * @param $arr -the array containig person object to sort
-	 * @param  $prop -the property for which to sort
+	 * @param arr the array containig person object to sort
+	 * @param prop the property for which to sort
 	 */
 	function sortBook($arr, $prop)
 	{
 		for ($i = 1; $i < count($arr); $i++) {
-			// getting value for back element
+			//var j for getting value for back element
 			$j = ($i - 1);
-			//saving it in temperary variable;
+			//saving it in temperary variable
 			$temp = $arr[$i];
 			while ($j >= 0 && $arr[$j]->{$prop} >= $temp->{$prop}) {
 				$arr[$j + 1] = $arr[$j];
@@ -400,12 +402,13 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * Function to save passed $addressBook in json file
+	 * Function to save passed addressBook in json file
 	 * 
-	 * @param addressBook -the array containing the person object and to be stored in json file
+	 * @param addressBook -the array containing the data of person object
 	 */
 	function save($addressBook)
 	{
+		//storing json string in .json file
 		file_put_contents("AddressBook.json", json_encode($addressBook));
 	}
 
