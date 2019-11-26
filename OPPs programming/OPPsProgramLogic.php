@@ -352,7 +352,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 *  printBook($arr) function to print the AddressBook
+	 *  printBook($arr) function to print person details from AddressBook
 	 */
 	function printBook($arr)
 	{
