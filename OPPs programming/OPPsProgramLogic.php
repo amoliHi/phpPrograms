@@ -612,7 +612,7 @@ class OPPsProgramLogic
 	{
 		$playerQue = new Queue();
 		for ($i = 1; $i < 5; $i++) {
-			echo "Enter player $i name ";
+			echo "Enter player $i name \n";
 			$name = Utility::getString();
 			$player = new Player($name);
 			for ($j = 0; $j < 9; $j++) {
@@ -634,8 +634,8 @@ class OPPsProgramLogic
 	 */
 	function showCards()
 	{
-		$playerQue = getDeck();
-		$playerQue = playerDist($playerQue);
+		$playerQue = OPPsProgramLogic::createDeck();
+		$playerQue = OPPsProgramLogic::playerDist($playerQue);
 		while ($playerQue->isEmpty() == false) {
 			$pl = $playerQue->dequeue();
 			echo $pl . "-{";
