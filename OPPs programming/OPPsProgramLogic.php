@@ -550,7 +550,11 @@ class OPPsProgramLogic
 			for ($j = 0; $j < 9; $j++) {
 				$r = rand(0, 3);
 				$c = rand(0, count($deck[$r]) - 1);
+				//using randomly generated numbers as index
+				//storing data from deck to players array
+				//random distribution of cards
 				$players[$i][$j] = $deck[$r][$c];
+				//remove elements from an array and replace it with new element
 				array_splice($deck[$r], $c, 1);
 			}
 		}
@@ -588,6 +592,7 @@ class OPPsProgramLogic
 	 */
 	function displayCards($player)
 	{
+		//array to contain special rank cards
 		$special = ["Jack", "Queen", "King", "Ace"];
 		for ($i = 0; $i < count($player); $i++) {
 			$print = "{";
@@ -611,12 +616,15 @@ class OPPsProgramLogic
 	{
 		echo "Deck of cards created.\nPress Enter the proceed.\n";
 		fscanf(STDIN, "%s\n");
+		//var deck will contain deck in the form of 2d array
 		$deck = OPPsProgramLogic::createDeck();
 		echo "Press Enter to shuffle the deck. \n";
 		fscanf(STDIN, "%s\n");
+		//here deck will contain randomly shuffled array 
 		$deck = OPPsProgramLogic::shufflecard($deck);
 		echo "Press Enter to distribute the cards among players.\n";
 		fscanf(STDIN, "%s\n");
+		//var players will store 2d array of distributed cards
 		$players = OPPsProgramLogic::distribute($deck);
 		$players = OPPsProgramLogic::sortPlayer($players);
 		OPPsProgramLogic::displayCards($players);
