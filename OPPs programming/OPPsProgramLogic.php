@@ -638,15 +638,19 @@ class OPPsProgramLogic
 	 */
 	function playerDist($deck)
 	{
+		//var playerQue object of class Queue
 		$playerQue = new Queue();
 		for ($i = 1; $i < 5; $i++) {
 			echo "Enter player $i name \n";
 			$name = Utility::getString();
+			//var player object of class Player
 			$player = new Player($name);
+			//logic for randomly enqueueing cards in Player queue
 			for ($j = 0; $j < 9; $j++) {
 				$r = rand(0, 3);
 				$c = rand(0, count($deck[$r]) - 1);
 				$player->pushCard($deck[$r][$c]);
+				//remove elements from an array and replace it with new element
 				array_splice($deck[$r], $c, 1);
 			}
 			$playerQue->enqueue($player);
@@ -657,7 +661,6 @@ class OPPsProgramLogic
 	/**
 	 * Driver function of PlayersDeck program 
 	 * 
-	 * @param playerQue containing queue data of players
 	 * @return void 
 	 */
 	function showCards()
@@ -666,8 +669,10 @@ class OPPsProgramLogic
 		$playerQue = OPPsProgramLogic::playerDist($playerQue);
 		while ($playerQue->isEmpty() == false) {
 			$pl = $playerQue->dequeue();
+			//displaying cards
 			echo $pl . "-->{";
 			while ($pl->cards->isEmpty() == false) {
+				//displaying cards
 				echo $pl->cards->dequeue() . ",";
 			}
 			echo "}\n\n";
@@ -702,7 +707,7 @@ class Person
  */
 class Player
 {
-	//variables to take card data
+	//var name to store name of player
 	public $name;
 	public $cards;
 
@@ -712,10 +717,11 @@ class Player
 	}
 
 	/**
-	 * Function to initialize 
+	 * Function to initialize @var name
 	 */
 	function __construct($name)
 	{
+		//for every new name entry new card queue object will be created
 		$this->cards = new Queue();
 		$this->name = $name;
 	}
@@ -727,12 +733,14 @@ class Player
 	 */
 	function pushCard($card)
 	{
+		//storing card data in queue
 		$this->cards->enqueue($card);
 	}
 
 	function sortDeck()
 	{
 		while ($this->cards->isEmpty() === false) {
+			//dequeued element will be stored in ar array
 			$ar[] = $this->cards->dequeue();
 		}
 	}
