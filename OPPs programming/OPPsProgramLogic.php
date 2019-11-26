@@ -242,7 +242,7 @@ class OPPsProgramLogic
 				OPPsProgramLogic::stockInventory();
 				break;
 			case '2':
-			//var portfolio for storing json string
+				//var portfolio for storing json string
 				$portfolio = json_decode(file_get_contents("stock.json"));
 				//call to print the stock report
 				OPPsProgramLogic::printStoRep($portfolio);
@@ -415,7 +415,7 @@ class OPPsProgramLogic
 	/**
 	 * Driver function of AddressBook program
 	 * 
-	 * @param addressBook -the array containing the person object/details
+	 * @param addressBook array containing the person object/details
 	 */
 	function addressbkmenu($addressBook)
 	{
@@ -458,6 +458,7 @@ class OPPsProgramLogic
 					OPPsProgramLogic::printBook($addressBook);
 				} else
 					OPPsProgramLogic::addressbkmenu($addressBook);
+				echo "Press Enter to proceed";
 				fscanf(STDIN, "%s\n");
 				OPPsProgramLogic::addressbkmenu($addressBook);
 				break;
@@ -483,7 +484,7 @@ class OPPsProgramLogic
 	/**
 	 * Function to create a deck of cards
 	 * 
-	 * @return arr the 2d array of the deck 
+	 * @return deck the 2d array of the deck 
 	 */
 	function createDeck()
 	{
@@ -495,6 +496,7 @@ class OPPsProgramLogic
 		$deck = [];
 		for ($i = 0; $i < count($suits); $i++) {
 			for ($j = 0; $j < count($rank); $j++) {
+				//providing cards with suits and rank data
 				//putting the values of cards in the deck array  
 				$deck[$i][$j] = new card($suits[$i], $rank[$j]);
 			}
