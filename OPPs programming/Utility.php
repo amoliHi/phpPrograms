@@ -6,7 +6,7 @@
 class Utility
 {
     /**
-     * validateUserName($name) function - for verifying the type and lenght of user input name. 
+     * Function for verifying the type and lenght of user input name. 
      *
      * @param [string] $name
      * @return boolean 
