@@ -57,11 +57,10 @@ function detailentry($file)
 
 
 /**
- * searchdoctor
+ * Function to search doctors from the list
  *
  * @param  mixed $arr
- *
- * @return void
+ * @return 
  */
 function searchdoctor($arr)
 {
@@ -243,3 +242,7 @@ function clinicMgmt($file)
 
 $file = json_decode(file_get_contents("CliniqueMgmt.txt"));
 clinicMgmt($file);
+## Specimen 
+/**
+ * @var integer
+ */
