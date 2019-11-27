@@ -162,7 +162,7 @@ function sortBook(&$arr , $prop){
         }
 }
 /**
- * function to save passed adrees bokk ib json file
+ * function to save passed a
  * 
  * @param arr the array containing the person object ie addressbook to sav ein the file
  */
