@@ -260,7 +260,7 @@ class OPPsProgramLogic
 	 * @param addressbook the array of addressbook to store created person object
 	 * @return void
 	 */
-	function createPerson($addressBook)
+	function createPerson($addressBookarr)
 	{
 		//@var person object of class Person
 		$person = new Person();
@@ -281,13 +281,14 @@ class OPPsProgramLogic
 		echo "Enter Mobile Number : \n";
 		$person->phone = Utility::getInt();
 		//adding person information to addressBook array
-		$addressBook[] = $person;
+		$addressBookarr[] = $person;
 	}
 
 	/**
 	 * Function to edit the details of a person
 	 * 
-	 * @param person helps to call the person class variables
+	 * @param person object of person class, 
+	 * helps to call the person class variables
 	 */
 	function edit($person)
 	{
@@ -406,10 +407,10 @@ class OPPsProgramLogic
 	 * 
 	 * @param addressBook -the array containing the data of person object
 	 */
-	function save($addressBook)
+	function save($addressBookarr)
 	{
 		//storing json string in .json file
-		file_put_contents("AddressBook.json", json_encode($addressBook));
+		file_put_contents("AddressBook.json", json_encode($addressBookarr));
 	}
 
 	/**
@@ -417,7 +418,7 @@ class OPPsProgramLogic
 	 * 
 	 * @param addressBook array containing the person object/details
 	 */
-	function addressbkmenu($addressBook)
+	function addressbkmenu($addressBookarr)
 	{
 		echo "\n ..Address Book..\n\nEnter 1 to add person.\nEnter 2 to Edit a person.",
 			"\nEnter 3 to Delete a person.\nEnter 4 to Sort and Display.\nEnter 5 to search.",
@@ -425,12 +426,12 @@ class OPPsProgramLogic
 		$ch = Utility::getInt();
 		switch ($ch) {
 			case '1':
-				OPPsProgramLogic::createPerson($addressBook);
-				OPPsProgramLogic::addressbkmenu($addressBook);
+				OPPsProgramLogic::createPerson($addressBookarr);
+				OPPsProgramLogic::addressbkmenu($addressBookarr);
 				break;
 			case '2':
 				$k = 2;
-				while (($i = search($addressBook)) === -1) {
+				while (($i = search($addressBookarr)) === -1) {
 					var_dump($i);
 					echo "No enteries Found\nenter 1 to exit to Menu or Else to search again\n";
 					fscanf(STDIN, "%s\n", $k);
@@ -438,45 +439,45 @@ class OPPsProgramLogic
 						break;
 				}
 				if ($k == 1)
-					OPPsProgramLogic::addressbkmenu($addressBook);
+					OPPsProgramLogic::addressbkmenu($addressBookarr);
 				else
-					$addressbook[$i] = OPPsProgramLogic::edit($addressBook[$i]);
-				OPPsProgramLogic::addressbkmenu($addressBook);
+					$addressBookarr[$i] = OPPsProgramLogic::edit($addressBookarr[$i]);
+				OPPsProgramLogic::addressbkmenu($addressBookarr);
 				break;
 			case '3':
-				OPPsProgramLogic::delete($addressBook);
-				OPPsProgramLogic::addressbkmenu($addressBook);
+				OPPsProgramLogic::delete($addressBookarr);
+				OPPsProgramLogic::addressbkmenu($addressBookarr);
 				break;
 			case '4':
 				echo "Enter 1 to sort by Name\nEnter 2 to sort by Zip\nElse to Menu";
 				$c = Utility::getInt();
 				if ($c == 1) {
-					OPPsProgramLogic::sortBook($addressBook, "fname");
-					OPPsProgramLogic::printBook($addressBook);
+					OPPsProgramLogic::sortBook($addressBookarr, "fname");
+					OPPsProgramLogic::printBook($addressBookarr);
 				} else if ($c == 2) {
-					OPPsProgramLogic::sortBook($addressBook, "zip");
-					OPPsProgramLogic::printBook($addressBook);
+					OPPsProgramLogic::sortBook($addressBookarr, "zip");
+					OPPsProgramLogic::printBook($addressBookarr);
 				} else
-					OPPsProgramLogic::addressbkmenu($addressBook);
+					OPPsProgramLogic::addressbkmenu($addressBookarr);
 				echo "Press Enter to proceed";
 				fscanf(STDIN, "%s\n");
-				OPPsProgramLogic::addressbkmenu($addressBook);
+				OPPsProgramLogic::addressbkmenu($addressBookarr);
 				break;
 			case '5':
-				$i = OPPsProgramLogic::search($addressBook);
+				$i = OPPsProgramLogic::search($addressBookarr);
 				if ($i > -1) {
 					$arr = [];
-					$arr[] = $addressBook[$i];
+					$arr[] = $addressBookarr[$i];
 					OPPsProgramLogic::printBook($arr);
 				}
 				echo "\n";
 				fscanf(STDIN, "%s\n");
-				OPPsProgramLogic::addressbkmenu($addressBook);
+				OPPsProgramLogic::addressbkmenu($addressBookarr);
 				break;
 			default:
 				echo "Enter 1 to save ";
 				if (Utility::getInt() == 1)
-					OPPsProgramLogic::save($addressBook);
+					OPPsProgramLogic::save($addressBookarr);
 				break;
 		}
 	}
@@ -740,7 +741,7 @@ class Player
 	function sortDeck()
 	{
 		while ($this->cards->isEmpty() === false) {
-			//dequeued element will be stored in ar array
+			//dequeued element will be stored in array ar
 			$ar[] = $this->cards->dequeue();
 		}
 	}

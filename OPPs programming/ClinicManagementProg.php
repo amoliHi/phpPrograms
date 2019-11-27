@@ -45,9 +45,9 @@ function detailentry($file)
     echo "Enter D to enter details of Doctor.\nEnter P to enter details of Patient.\n";
     $input = Utility::getString();
     if ($input == "D")
-        createDoctor();
+        createDoctor($file);
     elseif ($input == "P")
-        createPatient();
+        createPatient($file);
     else {
         echo "WRONG ENTRY !!!!\n";
         echo "Please provide input from the given options.\n";
@@ -55,24 +55,39 @@ function detailentry($file)
     }
 }
 
-function search($arr)
-	{
-		echo "Enter firstaname : \n";
-		$fname = Utility::getString();
-		echo "Enter last name : \n";
-		$lname = Utility::getString();
-		//loop for traversing and searching person details in array as per user input
-		for ($i = 0; $i < count($arr); $i++) {
-			if ($arr[$i]->fname == $fname) {
-				if ($arr[$i]->lname == $lname) {
-					return $i;
-				}
-			}
-		}
-		return -1;
-	}
+function searchdoctor($arr)
+{
+    echo "Enter Doctor name : \n";
+    $name = Utility::getString();
+    echo "Enter Id. number : \n";
+    $id = Utility::getString();
+    echo "Enter specialization :";
+    $special = Utility::getString();
+    //loop for traversing and searching person details in array as per user input
+    for ($i = 0; $i < count($arr); $i++) {
+        if ($arr[$i]->fname == $name || $arr[$i]->id == $id || $arr[$i]->special == $special)
+                    return $i;
+    }
+    return -1;
+}
 
-function createDoctor()
+function searchPatient($arr)
+{
+    echo "Enter Patient name : \n";
+    $name = Utility::getString();
+    echo "Enter Id. number : \n";
+    $id = Utility::getString();
+    echo "Enter Mob. number :";
+    $special = Utility::getString();
+    //loop for traversing and searching person details in array as per user input
+    for ($i = 0; $i < count($arr); $i++) {
+        if ($arr[$i]->fname == $name || $arr[$i]->id == $id || $arr[$i]->special == $special)
+                    return $i;
+    }
+    return -1;
+}
+
+function createDoctor($file)
 {
     //@var Doctor to store the object of Doctor class
     $Doctor = new Doctor();
@@ -89,9 +104,10 @@ function createDoctor()
     $Doctor->pm = (Utility::getInt() . " pm");
     //adding Doctor information to the array $doctor_arr
     $doctor_arr[] = $Doctor;
+    Utility::putJsonin($doctor_arr, $file);
 }
 
-function createPatient()
+function createPatient($file)
 {
     //@var Doctor to store the object of Doctor class
     $Patient = new Patient();
@@ -108,6 +124,33 @@ function createPatient()
     Utility::putJsonin($patient_arr, $file);
 }
 
+function edit($person)
+	{
+		echo "Enter 1 to change Address.\nEnter 2 change Mobile Number.\n";
+		//taking user input and accordingly control will work
+		$choice = Utility::getInt();
+		switch ($choice) {
+			case '1':
+				echo "Enter State : \n";
+				$person->state = Utility::getString();
+				echo "Enter City : \n";
+				$person->city = Utility::getString();
+				echo "Enter Zip of $person->city : \n";
+				$person->zip = Utility::getInt();
+				echo "Enter Address : \n";
+				$person->address = Utility::getString();
+				echo "Address changes succesfully. \n";
+				break;
+			case '2':
+				echo "Enter Mobile Number : \n";
+				$person->phone = Utility::getInt();
+				echo "Mobile no changed succesfully.\n";
+				break;
+			default:
+				break;
+		}
+	}
+
 function clinicMgmt($file)
 {
     echo "\n ....Clinique Management Book....\n\nEnter 1 to add Person Data.\nEnter 2 to Edit a person.",
@@ -123,16 +166,16 @@ function clinicMgmt($file)
             $k = 2;
             while (($i = search($file)) === -1) {
                 var_dump($i);
-                echo "No enteries Found\nenter 1 to exit to Menu or Else to search again\n";
+                echo "No enteries Found\nEnter 1 to exit to Menu or Else to search again\n";
                 fscanf(STDIN, "%s\n", $k);
                 if ($k == 1)
                     break;
             }
             if ($k == 1)
-                OPPsProgramLogic::addressbkmenu($addressBook);
+            clinicMgmt($file);
             else
-                $addressbook[$i] = OPPsProgramLogic::edit($addressBook[$i]);
-            OPPsProgramLogic::addressbkmenu($addressBook);
+                $file[$i] = edit($file[$i]);
+            addressbkmenu($file);
             break;
         case '3':
             OPPsProgramLogic::delete($addressBook);
