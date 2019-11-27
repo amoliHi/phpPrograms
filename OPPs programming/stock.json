@@ -1,22 +1,17 @@
 [
     {
-        "name": "gOOGLE",
-        "price": "10",
-        "quantity": "2"
-    },
-    {
-        "name": "Amazon",
-        "price": "10",
-        "quantity": "2"
-    },
-    {
         "name": "Google",
         "price": "10",
-        "quantity": "2"
+        "quantity": "3"
+    },
+    {
+        "name": "Alibaba",
+        "price": "20",
+        "quantity": "4"
     },
     {
         "name": "Amazon",
-        "price": "20",
-        "quantity": "3"
+        "price": "10",
+        "quantity": "50"
     }
 ]
