@@ -175,7 +175,10 @@ function save($addressBook)
  */
 function menu($addressBook)
 {
-    echo "\n!!!!Address Book!!!!\n\nEnter 1 to add person\nEnter 2 to Edit a person\nEnter 3 to Delete a person\nEnter 4 to Sort and Display\nEnter 5 to search\nEnter anything to exit\n";
+    echo "\n!!!!Address Book!!!!\n\nEnter 1 to add person\n
+    Enter 2 to Edit a person\nEnter 3 to Delete a person\n
+    Enter 4 to Sort and Display\nEnter 5 to search\n
+    Enter anything to exit\n";
     $ch = Utility::getInt();
     switch ($ch) {
         case '1':
