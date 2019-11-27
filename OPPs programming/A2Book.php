@@ -175,10 +175,7 @@ function save($addressBook)
  */
 function menu($addressBook)
 {
-    echo "\n!!!!Address Book!!!!\n\nEnter 1 to add person\n
-    Enter 2 to Edit a person\nEnter 3 to Delete a person\n
-    Enter 4 to Sort and Display\nEnter 5 to search\n
-    Enter anything to exit\n";
+    echo "\n!!!!Address Book!!!!\n\nEnter 1 to add person\nEnter 2 to Edit a person\nEnter 3 to Delete a person\nEnter 4 to Sort and Display\nEnter 5 to search\nEnter anything to exit\n";
     $ch = Utility::getInt();
     switch ($ch) {
         case '1':
@@ -188,7 +185,7 @@ function menu($addressBook)
         case '2':
             $k = 2;
             while (($i = search($addressBook)) === -1) {
-                var_dump($i);
+                // var_dump($i);
                 echo "No enteries Found\nenter 1 to exit to MENU or Else to search again\n";
                 fscanf(STDIN, "%s\n", $k);
                 if ($k == 1) {
@@ -231,6 +228,7 @@ function menu($addressBook)
                 $arr[] = $addressBook[$i];
                 printBook($arr);
             }
+            else echo "Data not found in Directory!!!";
             echo"\n";
             fscanf(STDIN, "%s\n");
             menu($addressBook);

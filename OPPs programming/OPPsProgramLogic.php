@@ -432,7 +432,6 @@ class OPPsProgramLogic
 			case '2':
 				$k = 2;
 				while (($i = search($addressBookarr)) === -1) {
-					var_dump($i);
 					echo "No enteries Found\nenter 1 to exit to Menu or Else to search again\n";
 					fscanf(STDIN, "%s\n", $k);
 					if ($k == 1)
