@@ -1,0 +1,20 @@
+[
+    {
+        "fname": "kamal",
+        "lname": "nahata",
+        "address": "house no. 3",
+        "city": "bigcity",
+        "state": "bigstate",
+        "zip": "123654",
+        "phone": "5241526398"
+    },
+    {
+        "fname": "gogo",
+        "lname": "joho",
+        "address": "cybercity, 10",
+        "city": "cityisbig",
+        "state": "bigbig",
+        "zip": "123456",
+        "phone": "6352415263"
+    }
+]
