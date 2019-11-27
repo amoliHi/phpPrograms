@@ -1,6 +1,6 @@
 <?php
 
-/*require functions of Utility class*/
+//require functions of Utility class
 include "Utility.php";
 
 /* 
@@ -8,6 +8,7 @@ include "Utility.php";
 */
 class OPPsProgramLogic
 {
+
 	/**
 	 * Funtion to create the objects of the inventory and return 
 	 * it as an array of objects.

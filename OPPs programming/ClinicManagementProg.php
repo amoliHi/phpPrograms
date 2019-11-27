@@ -55,6 +55,7 @@ function detailentry($file)
     }
 }
 
+
 function searchdoctor($arr)
 {
     echo "Enter Doctor name : \n";
@@ -66,10 +67,11 @@ function searchdoctor($arr)
     //loop for traversing and searching person details in array as per user input
     for ($i = 0; $i < count($arr); $i++) {
         if ($arr[$i]->fname == $name || $arr[$i]->id == $id || $arr[$i]->special == $special)
-                    return $i;
+            return $i;
     }
     return -1;
 }
+
 
 function searchPatient($arr)
 {
@@ -82,7 +84,7 @@ function searchPatient($arr)
     //loop for traversing and searching person details in array as per user input
     for ($i = 0; $i < count($arr); $i++) {
         if ($arr[$i]->fname == $name || $arr[$i]->id == $id || $arr[$i]->special == $special)
-                    return $i;
+            return $i;
     }
     return -1;
 }
@@ -125,31 +127,31 @@ function createPatient($file)
 }
 
 function edit($person)
-	{
-		echo "Enter 1 to change Address.\nEnter 2 change Mobile Number.\n";
-		//taking user input and accordingly control will work
-		$choice = Utility::getInt();
-		switch ($choice) {
-			case '1':
-				echo "Enter State : \n";
-				$person->state = Utility::getString();
-				echo "Enter City : \n";
-				$person->city = Utility::getString();
-				echo "Enter Zip of $person->city : \n";
-				$person->zip = Utility::getInt();
-				echo "Enter Address : \n";
-				$person->address = Utility::getString();
-				echo "Address changes succesfully. \n";
-				break;
-			case '2':
-				echo "Enter Mobile Number : \n";
-				$person->phone = Utility::getInt();
-				echo "Mobile no changed succesfully.\n";
-				break;
-			default:
-				break;
-		}
-	}
+{
+    echo "Enter 1 to change Address.\nEnter 2 change Mobile Number.\n";
+    //taking user input and accordingly control will work
+    $choice = Utility::getInt();
+    switch ($choice) {
+        case '1':
+            echo "Enter State : \n";
+            $person->state = Utility::getString();
+            echo "Enter City : \n";
+            $person->city = Utility::getString();
+            echo "Enter Zip of $person->city : \n";
+            $person->zip = Utility::getInt();
+            echo "Enter Address : \n";
+            $person->address = Utility::getString();
+            echo "Address changes succesfully. \n";
+            break;
+        case '2':
+            echo "Enter Mobile Number : \n";
+            $person->phone = Utility::getInt();
+            echo "Mobile no changed succesfully.\n";
+            break;
+        default:
+            break;
+    }
+}
 
 function clinicMgmt($file)
 {
@@ -172,7 +174,7 @@ function clinicMgmt($file)
                     break;
             }
             if ($k == 1)
-            clinicMgmt($file);
+                clinicMgmt($file);
             else
                 $file[$i] = edit($file[$i]);
             addressbkmenu($file);
