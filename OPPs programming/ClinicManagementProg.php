@@ -56,6 +56,13 @@ function detailentry($file)
 }
 
 
+/**
+ * searchdoctor
+ *
+ * @param  mixed $arr
+ *
+ * @return void
+ */
 function searchdoctor($arr)
 {
     echo "Enter Doctor name : \n";
@@ -72,7 +79,12 @@ function searchdoctor($arr)
     return -1;
 }
 
-
+/**
+ * Undocumented function
+ *
+ * @param [mixed] $arr
+ * @return mixed 
+ */
 function searchPatient($arr)
 {
     echo "Enter Patient name : \n";
@@ -89,6 +101,12 @@ function searchPatient($arr)
     return -1;
 }
 
+/**
+ * Undocumented function
+ *
+ * @param [type] $file
+ * @return void
+ */
 function createDoctor($file)
 {
     //@var Doctor to store the object of Doctor class
@@ -109,6 +127,13 @@ function createDoctor($file)
     Utility::putJsonin($doctor_arr, $file);
 }
 
+
+/**
+ * Undocumented function
+ *
+ * @param [type] $file
+ * @return void
+ */
 function createPatient($file)
 {
     //@var Doctor to store the object of Doctor class
