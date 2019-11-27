@@ -387,7 +387,7 @@ class OPPsProgramLogic
 	 * @param arr the array containig person object to sort
 	 * @param prop the property for which to sort
 	 */
-	function sortBook(&$arr, $prop)
+	function sortBook($arr, $prop)
 	{
 		for ($i = 1; $i < count($arr); $i++) {
 			//var j for getting value for back element
