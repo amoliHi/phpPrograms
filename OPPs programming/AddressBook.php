@@ -8,7 +8,6 @@
  * city, state, zip, and phone number.
  ***********************************************************************************/
  
-
 //require functions of OPPsProgramLogic class
 include "OPPsProgramLogic.php";
 //decoding json file and storing it's content in variable $arr

@@ -317,11 +317,6 @@ class OPPsProgramLogic
 		}
 	}
 
-	/**
-	 * Function to delete the object of person from the array
-	 * 
-	 * @param arr array from which object is to be deleted
-	 */
 	function delete(&$arr)
 	{
 		//@var i stores the index number returned by serach($arr) function
