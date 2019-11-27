@@ -260,7 +260,7 @@ class OPPsProgramLogic
 	 * @param addressbook the array of addressbook to store created person object
 	 * @return void
 	 */
-	function createPerson($addressBookarr)
+	function createPerson(&$addressBookarr)
 	{
 		//@var person object of class Person
 		$person = new Person();
@@ -290,7 +290,7 @@ class OPPsProgramLogic
 	 * @param person object of person class, 
 	 * helps to call the person class variables
 	 */
-	function edit($person)
+	function edit(&$person)
 	{
 		echo "Enter 1 to change Address.\nEnter 2 change Mobile Number.\n";
 		//taking user input and accordingly control will work
@@ -322,7 +322,7 @@ class OPPsProgramLogic
 	 * 
 	 * @param arr array from which object is to be deleted
 	 */
-	function delete($arr)
+	function delete(&$arr)
 	{
 		//@var i stores the index number returned by serach($arr) function
 		$i = search($arr);
