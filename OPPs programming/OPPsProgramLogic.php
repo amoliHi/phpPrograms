@@ -325,7 +325,7 @@ class OPPsProgramLogic
 	function delete(&$arr)
 	{
 		//@var i stores the index number returned by serach($arr) function
-		$i = search($arr);
+		$i = OPPsProgramLogic::search($arr);
 		if ($i > -1) {
 			//remove elements from an array $arr and replace it with new element
 			array_splice($arr, $i, 1);
@@ -431,7 +431,7 @@ class OPPsProgramLogic
 				break;
 			case '2':
 				$k = 2;
-				while (($i = search($addressBookarr)) === -1) {
+				while (($i = OPPsProgramLogic::search($addressBookarr)) === -1) {
 					echo "No enteries Found\nenter 1 to exit to Menu or Else to search again\n";
 					fscanf(STDIN, "%s\n", $k);
 					if ($k == 1)
