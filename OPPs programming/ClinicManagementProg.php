@@ -145,7 +145,7 @@ function createPatient($file)
     $patient->mob = Utility::getString();
     echo "Enter Patient's age : \n";
     $patient->age = Utility::getInt();
-    //adding Doctor information to the array $doctor_arr
+    //adding Patients information to the array $doctor_arr
     $patient_arr[] = $patient;
     Utility::putJsonin($patient_arr, $file);
 }
@@ -179,7 +179,7 @@ function edit($person)
 
 function clinicMgmt($file)
 {
-    echo "\n ....Clinique Management Book....\n\nEnter 1 to add Person Data.\nEnter 2 to Edit a person.",
+    echo "\n ....Clinique Management Book....\n\nEnter 1 to add Person Data.\nEnter 2 to Edit a person's detail.",
         "\nEnter 3 to Delete a person.\nEnter 4 to Sort and Display.\nEnter 5 to search.",
         "\nEnter any other number to save and exit.\n";
     $ch = Utility::getInt();
@@ -191,8 +191,7 @@ function clinicMgmt($file)
         case '2':
             $k = 2;
             while (($i = search($file)) === -1) {
-                var_dump($i);
-                echo "No enteries Found\nEnter 1 to exit to Menu or Else to search again\n";
+                echo "No enteries Found.\nEnter 1 to exit to Menu or Else to search again\n";
                 fscanf(STDIN, "%s\n", $k);
                 if ($k == 1)
                     break;
