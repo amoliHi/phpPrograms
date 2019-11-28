@@ -427,18 +427,8 @@ class OPPsProgramLogic
 				OPPsProgramLogic::addressbkmenu($addressBookarr);
 				break;
 			case '2':
-				$k = 2;
-				while (($i = OPPsProgramLogic::search($addressBookarr)) === -1) {
-					echo "No enteries Found\nenter 1 to exit to Menu or Else to search again\n";
-					fscanf(STDIN, "%s\n", $k);
-					if ($k == 1)
-						break;
-				}
-				if ($k == 1)
-					OPPsProgramLogic::addressbkmenu($addressBookarr);
-				else
-					$addressBookarr[$i] = OPPsProgramLogic::edit($addressBookarr[$i]);
-				OPPsProgramLogic::addressbkmenu($addressBookarr);
+				OPPsProgramLogic::menuchoice2($addressBookarr);
+
 				break;
 			case '3':
 				OPPsProgramLogic::delete($addressBookarr);
@@ -476,6 +466,22 @@ class OPPsProgramLogic
 					OPPsProgramLogic::save($addressBookarr);
 				break;
 		}
+	}
+
+	function menuchoice2($addressBookarr)
+	{
+		$k = 2;
+		while (($i = OPPsProgramLogic::search($addressBookarr)) === -1) {
+			echo "No enteries Found\nenter 1 to exit to Menu or Else to search again\n";
+			fscanf(STDIN, "%s\n", $k);
+			if ($k == 1)
+				break;
+		}
+		if ($k == 1)
+			OPPsProgramLogic::addressbkmenu($addressBookarr);
+		else
+			$addressBookarr[$i] = OPPsProgramLogic::edit($addressBookarr[$i]);
+		OPPsProgramLogic::addressbkmenu($addressBookarr);
 	}
 
 	/**
