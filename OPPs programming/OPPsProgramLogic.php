@@ -708,6 +708,12 @@ class Player
 	public $name;
 	public $cards;
 
+
+	/**
+	 * Function to return string representation of object
+	 *
+	 * @return name 
+	 */
 	function __tostring()
 	{
 		return $this->name;
