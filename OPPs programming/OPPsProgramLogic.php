@@ -241,7 +241,7 @@ class OPPsProgramLogic
 				OPPsProgramLogic::stockInventory();
 				break;
 			case '2':
-				//@var mixed portfolio for storing json string
+				//@var mixed $portfolio for storing json string in the form of array
 				$portfolio = json_decode(file_get_contents("stock.json"));
 				//call to print the stock report
 				OPPsProgramLogic::printStoRep($portfolio);
@@ -256,7 +256,7 @@ class OPPsProgramLogic
 	/**
 	 * Function to create person object by the input provided by user
 	 * 
-	 * @param addressbook the array of addressbook to store created person object
+	 * @param &$addressBookarr - reference to the variable $addressBookarr
 	 * @return void
 	 */
 	function createPerson(&$addressBookarr)
@@ -286,13 +286,12 @@ class OPPsProgramLogic
 	/**
 	 * Function to edit the details of a person
 	 * 
-	 * @param person object of person class, 
-	 * helps to call the person class variables
+	 * @param &$person - reference to the variable $person
 	 */
 	function edit(&$person)
 	{
 		echo "Enter 1 to change Address.\nEnter 2 change Mobile Number.\n";
-		//taking user input and accordingly control will work
+		//@var int $choice hold user input and accordingly control will work
 		$choice = Utility::getInt();
 		switch ($choice) {
 			case '1':
