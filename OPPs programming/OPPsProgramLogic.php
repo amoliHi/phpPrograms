@@ -291,11 +291,12 @@ class OPPsProgramLogic
 	function edit(&$person)
 	{
 		echo "Enter 1 to change Address.\nEnter 2 change Mobile Number.\n";
-		//@var int $choice hold user input and accordingly control will work
+		//@var int $choice hold user input 
 		$choice = Utility::getInt();
 		switch ($choice) {
 			case '1':
 				echo "Enter State : \n";
+				//using functions from Utility class for taking input
 				$person->state = Utility::getString();
 				echo "Enter City : \n";
 				$person->city = Utility::getString();
@@ -316,9 +317,10 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * Function to delete details of a person
+	 * Function to delete data of a person
 	 * 
-	 * @param arr array containing person data 
+	 * @param &$arr - reference to the varaible $arr,
+	 * $arr contains person data in the form of array 
 	 */
 	function delete(&$arr)
 	{
@@ -337,8 +339,8 @@ class OPPsProgramLogic
 	 * Function to search the array for specific person and return the index 
 	 * of person or -1 if not found
 	 * 
-	 * @param arr array in which to search for person object
-	 * @return [integer] index of the searched item or -1 if not found
+	 * @param $arr array in which to search for person object
+	 * @return int $i - index of the searched item or -1 if not found
 	 */
 	function search($arr)
 	{
