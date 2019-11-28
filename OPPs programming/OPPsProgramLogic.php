@@ -55,7 +55,7 @@ class OPPsProgramLogic
 	 */
 	function printInvenTotal($arr)
 	{
-		//var price for storing total price
+		//@var price for storing total price
 		$price = 0;
 		for ($i = 0; $i < count($arr); $i++) {
 			// calculating price of the single object
