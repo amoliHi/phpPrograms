@@ -211,7 +211,8 @@ class OPPsProgramLogic
 		echo "Stock Name | Per Share Price | No. Of Shares | Stock Price \n";
 		//loop for travesing and printing stock data
 		foreach ($portfolio as $key) {
-			echo sprintf("%-10s | rs %-12u | %-13u | rs %u",
+			echo sprintf(
+				"%-10s | rs %-12u | %-13u | rs %u",
 				$key->name,
 				$key->price,
 				$key->quantity,
@@ -349,11 +350,8 @@ class OPPsProgramLogic
 		$lname = Utility::getString();
 		//loop for traversing and searching person details in array as per user input
 		for ($i = 0; $i < count($arr); $i++) {
-			if ($arr[$i]->fname == $fname) {
-				if ($arr[$i]->lname == $lname) {
-					return $i;
-				}
-			}
+			if ($arr[$i]->fname == $fname && $arr[$i]->lname == $lname)
+				return $i;
 		}
 		return -1;
 	}
