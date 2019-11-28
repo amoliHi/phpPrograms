@@ -31,6 +31,7 @@ set_exception_handler(function ($exception) {
     
     die();
  });
+ 
 //class to create object of stock
 class Stock
 {
