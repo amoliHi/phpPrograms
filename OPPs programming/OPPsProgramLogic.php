@@ -720,7 +720,10 @@ class Player
 	}
 
 	/**
-	 * Function to initialize @var name
+	 * Function to initialize name variable and create a new card queue
+	 * for every new player name entered
+	 * 
+	 * @var name player name
 	 */
 	function __construct($name)
 	{
