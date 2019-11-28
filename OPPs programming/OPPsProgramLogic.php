@@ -242,7 +242,7 @@ class OPPsProgramLogic
 				OPPsProgramLogic::stockInventory();
 				break;
 			case '2':
-				//var portfolio for storing json string
+				//@var mixed $portfolio for storing json string
 				$portfolio = json_decode(file_get_contents("stock.json"));
 				//call to print the stock report
 				OPPsProgramLogic::printStoRep($portfolio);
