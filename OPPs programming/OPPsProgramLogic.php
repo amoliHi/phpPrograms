@@ -18,7 +18,7 @@ class OPPsProgramLogic
 	function inventoryObject()
 	{
 		$name = array("Rice", "Wheat", "Pulses");
-		//creating empty array to store inventory details
+		//@var $invenObject empty array to store inventory details
 		$invenObject = array();
 		//loop for traversing and taking product details as input
 		for ($i = 0; $i < 3; $i++) {
@@ -27,6 +27,7 @@ class OPPsProgramLogic
 			echo "Enter per kg price of " . $name[$i] . "\n";
 			$price = readline();
 			echo "\n";
+			//@var $invenObject holds object of each new product
 			$invenObject[$i] = new Inventory($name[$i], $weight, $price);
 		}
 		return $invenObject;
@@ -55,13 +56,13 @@ class OPPsProgramLogic
 	 */
 	function printInvenTotal($arr)
 	{
-		//@var price for storing total price
+		//@var int $price for storing total price
 		$price = 0;
 		for ($i = 0; $i < count($arr); $i++) {
-			// calculating price of the single object
+			//@var int|float $singleobjprice holds price of the single object
 			$singleobjprice = $arr[$i]['weight'] * $arr[$i]['price'];
 			echo "Total price for " . $arr[$i]['weight'] . " kg " . $arr[$i]['name'] . " is : " . $singleobjprice . "rs\n";
-			//calculating total price of all inventory objects
+			//@var int $price hold total price of inventory objects
 			$price += $singleobjprice;
 		}
 		echo "Total Price of Inventory is : " . $price . "rs\n";
