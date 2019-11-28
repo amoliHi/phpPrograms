@@ -1,1 +1,27 @@
-[{"name":"Google","price":"10","quantity":"3"},{"name":"Alibaba","price":"20","quantity":"4"},{"name":"Amazon","price":"10","quantity":"50"},{"name":"intel","price":"10","quantity":"2"},{"name":"idea","price":"30","quantity":"2"}]
+[
+    {
+        "name": "Google",
+        "price": "10",
+        "quantity": "3"
+    },
+    {
+        "name": "Alibaba",
+        "price": "20",
+        "quantity": "4"
+    },
+    {
+        "name": "Amazon",
+        "price": "10",
+        "quantity": "50"
+    },
+    {
+        "name": "intel",
+        "price": "10",
+        "quantity": "2"
+    },
+    {
+        "name": "idea",
+        "price": "30",
+        "quantity": "2"
+    }
+]
