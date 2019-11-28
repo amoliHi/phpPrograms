@@ -28,7 +28,6 @@ class OPPsProgramLogic
 			$price = readline();
 			echo "\n";
 			$invenObject[$i] = new Inventory($name[$i], $weight, $price);
-			print_r($invenObject);
 		}
 		return $invenObject;
 	}
