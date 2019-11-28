@@ -194,19 +194,19 @@ class OPPsProgramLogic
 	{
 		//@var string|bool $json hold encoded array in the form of json string
 		$json =  json_encode($arr);
-		//storing json string into the files
+		//storing json string into file
 		file_put_contents("stock.json", $json);
 	}
 
 	/**
 	 * Function to read and print the string from json file
 	 *
-	 * @param portfolio - stock inventory array object containing Stock data
+	 * @param portfolio stock inventory array object containing Stock data
 	 * @return void
 	 */
 	function printStoRep($portfolio)
 	{
-		//var total for storing total value of stock
+		//@var int $total for storing total value of stock
 		$total = 0;
 		echo "Stock Name | Per Share Price | No. Of Shares | Stock Price \n";
 		//loop for travesing and printing stock data
@@ -226,7 +226,6 @@ class OPPsProgramLogic
 	/**
 	 * Driver function for StockInventory program 
 	 *
-	 * @param file -stock inventory object containing Stock data 
 	 * @return void 
 	 */
 	function stockInventory()
