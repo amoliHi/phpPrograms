@@ -357,9 +357,9 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 *  Function to print person details from AddressBook
+	 * Function to print person's details from AddressBook
 	 * 
-	 * @param arr array containing the data about person
+	 * @param $arr array containing the data of a person
 	 */
 	function printBook($arr)
 	{
@@ -387,9 +387,9 @@ class OPPsProgramLogic
 	function sortBook($arr, $prop)
 	{
 		for ($i = 1; $i < count($arr); $i++) {
-			//var j for getting value for back element
+			//@var int|float $j holds value for back element
 			$j = ($i - 1);
-			//saving it in temperary variable
+			//@var $temp value at i'th array index
 			$temp = $arr[$i];
 			while ($j >= 0 && $arr[$j]->{$prop} >= $temp->{$prop}) {
 				$arr[$j + 1] = $arr[$j];
@@ -400,7 +400,7 @@ class OPPsProgramLogic
 	}
 
 	/**
-	 * Function to save passed addressBook in json file
+	 * Function to save addressBook in json file
 	 * 
 	 * @param addressBook -the array containing the data of person object
 	 */
