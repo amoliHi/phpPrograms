@@ -211,8 +211,7 @@ class OPPsProgramLogic
 		echo "Stock Name | Per Share Price | No. Of Shares | Stock Price \n";
 		//loop for travesing and printing stock data
 		foreach ($portfolio as $key) {
-			echo sprintf(
-				"%-10s | rs %-12u | %-13u | rs %u",
+			echo sprintf("%-10s | rs %-12u | %-13u | rs %u",
 				$key->name,
 				$key->price,
 				$key->quantity,
@@ -242,7 +241,7 @@ class OPPsProgramLogic
 				OPPsProgramLogic::stockInventory();
 				break;
 			case '2':
-				//@var mixed $portfolio for storing json string
+				//@var mixed portfolio for storing json string
 				$portfolio = json_decode(file_get_contents("stock.json"));
 				//call to print the stock report
 				OPPsProgramLogic::printStoRep($portfolio);
