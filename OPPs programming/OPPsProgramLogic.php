@@ -613,7 +613,7 @@ class OPPsProgramLogic
 	{
 		echo "Deck of cards created.\nPress Enter the proceed.\n";
 		fscanf(STDIN, "%s\n");
-		//var deck will contain deck in the form of 2d array
+		//@var deck will contain deck in the form of 2d array
 		$deck = OPPsProgramLogic::createDeck();
 		echo "Press Enter to shuffle the deck. \n";
 		fscanf(STDIN, "%s\n");
@@ -635,12 +635,12 @@ class OPPsProgramLogic
 	 */
 	function playerDist($deck)
 	{
-		//var playerQue object of class Queue
+		//@var playerQue object of class Queue
 		$playerQue = new Queue();
 		for ($i = 1; $i < 5; $i++) {
 			echo "Enter player $i name \n";
 			$name = Utility::getString();
-			//var player object of class Player
+			//@var player object of class Player
 			$player = new Player($name);
 			//logic for randomly enqueueing cards in Player queue
 			for ($j = 0; $j < 9; $j++) {
@@ -666,10 +666,9 @@ class OPPsProgramLogic
 		$playerQue = OPPsProgramLogic::playerDist($playerQue);
 		while ($playerQue->isEmpty() == false) {
 			$pl = $playerQue->dequeue();
-			//displaying cards
+			//cards display
 			echo $pl . "-->{";
 			while ($pl->cards->isEmpty() == false) {
-				//displaying cards
 				echo $pl->cards->dequeue() . ",";
 			}
 			echo "}\n\n";
@@ -682,19 +681,19 @@ class OPPsProgramLogic
  */
 class Person
 {
-	//var fname to store first name of the person
+	//@var fname to store first name of the person
 	public $fname;
-	//var lname to store the last name of the person
+	//@var lname to store the last name of the person
 	public $lname;
-	//var address to store the address of person as a string
+	//@var address to store the address of person as a string
 	public $address;
-	//var city to store the name of the city of person
+	//@var city to store the name of the city of person
 	public $city;
-	//var state to store the state of the person
+	//@var state to store the state of the person
 	public $state;
-	//var zip to store the zip code of the city 
+	//@var zip to store the zip code of the city 
 	public $zip;
-	//var phone to store the phone no of the person 
+	//@var phone to store the phone no of the person 
 	public $phone;
 }
 
@@ -704,7 +703,7 @@ class Person
  */
 class Player
 {
-	//var name to store name of player
+	//@var name to store name of player
 	public $name;
 	public $cards;
 
@@ -727,7 +726,7 @@ class Player
 	 */
 	function __construct($name)
 	{
-		//for every new name entry new card queue object will be created
+		//for every new name entry, new card queue will be created
 		$this->cards = new Queue();
 		$this->name = $name;
 	}
