@@ -87,7 +87,7 @@ function printReport($portfolio)
     echo "Total Value Of Stocks is : " . $total . " rs\n";
 }
 /**
- * function to create new portfolio 
+ * Function to create new portfolio 
  */
 function newPort()
 {
