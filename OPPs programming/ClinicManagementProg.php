@@ -101,9 +101,9 @@ function searchPatient($arr)
 }
 
 /**
- * Undocumented function
- *
- * @param [type] $file
+ * Function to create doctor object and take doctor's data
+ * 
+ * @param $file - contain data of doctor in the form of array
  * @return void
  */
 function createDoctor($file)
@@ -128,25 +128,25 @@ function createDoctor($file)
 
 
 /**
- * Undocumented function
- *
- * @param [type] $file
+ * Function to create patient object and take patients's data
+ * 
+ * @param $file - contain data of patient in the form of array
  * @return void
  */
 function createPatient($file)
 {
-    //@var Doctor to store the object of Doctor class
-    $Patient = new Patient();
+    //@var $patient to store the object of Doctor class
+    $patient = new Patient();
     echo "Enter Patient name : \n";
-    $Patient->name = Utility::getString();
+    $patient->name = Utility::getString();
     echo "Enter Patient's Id. number : \n";
-    $Patient->id = Utility::getInt();
+    $patient->id = Utility::getInt();
     echo "Enter Patient's mobile number : \n";
-    $Patient->mob = Utility::getString();
+    $patient->mob = Utility::getString();
     echo "Enter Patient's age : \n";
-    $Patient->age = Utility::getInt();
+    $patient->age = Utility::getInt();
     //adding Doctor information to the array $doctor_arr
-    $patient_arr[] = $Patient;
+    $patient_arr[] = $patient;
     Utility::putJsonin($patient_arr, $file);
 }
 
@@ -243,6 +243,6 @@ function clinicMgmt($file)
 $file = json_decode(file_get_contents("CliniqueMgmt.txt"));
 clinicMgmt($file);
 ## Specimen 
-// /**
-//  * @var integer
-//  */
+/**
+ * @var integer
+ */
