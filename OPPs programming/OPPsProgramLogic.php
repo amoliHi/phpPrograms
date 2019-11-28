@@ -18,7 +18,7 @@ class OPPsProgramLogic
 	function inventoryObject()
 	{
 		$name = array("Rice", "Wheat", "Pulses");
-		//@var $invenObject empty array to store inventory details
+		//@var array $invenObject empty array to store inventory object details
 		$invenObject = array();
 		//loop for traversing and taking product details as input
 		for ($i = 0; $i < 3; $i++) {
@@ -27,7 +27,7 @@ class OPPsProgramLogic
 			echo "Enter per kg price of " . $name[$i] . "\n";
 			$price = readline();
 			echo "\n";
-			//@var $invenObject holds object of each new product
+			//storing object of each new product in $invenObject array
 			$invenObject[$i] = new Inventory($name[$i], $weight, $price);
 		}
 		return $invenObject;
@@ -40,11 +40,10 @@ class OPPsProgramLogic
 	 */
 	function getJson($file)
 	{
-		//putting the json string from the files ot variable
+		//@var string|bool $contents holds json string got from file
 		$contents = file_get_contents($file);
-		//decoding the json string 
+		//@var mixed $arr holds decoded json string 
 		$arr = json_decode($contents, true);
-		//returning the decoded array
 		return $arr;
 	}
 
@@ -75,20 +74,20 @@ class OPPsProgramLogic
 	 */
 	function jsonInventory()
 	{
-		//getting json file and putting it in variable
+		//@var string $file hold json string
 		$file = "Inventory.json";
 		//getting array of oblect from the function
 		$arr = OPPsProgramLogic::inventoryObject();
-		//putting the array of object in the file as json
+		//putting the array of object in the file as json string
 		Utility::putJsonin($arr, $file);
-		//reading json from the file and decoding to array
+		//@var $jsonArr hold json string got from .json file
 		$jsonArr = OPPsProgramLogic::getJson($file);
-		//printing the inventory
+		//printing inventory details
 		OPPsProgramLogic::printInvenTotal($jsonArr);
 	}
 
 	/**
-	 * Function to use regEx to replace name, full name, Mobile#, and Date
+	 * Function to use regEx to replace name, full name, Mobile, and Date
 	 * in the given message by the user input values.
 	 *
 	 * @param message -contains message to be changed
@@ -114,7 +113,7 @@ class OPPsProgramLogic
 	{
 		$message = "Hello <<name>>, We have your full name as <<full name>> in our system. your contact number is 91-xxxxxxxxxx.\nPlease,let us know in case of any clarification.\nThank you\nBridgeLabz\nxx/xx/xxxx.";
 		echo "Enter your First name:- \n";
-		//var fname will hold user first name
+		//@var $str $fname hold user first name
 		$fname = Utility::getString();
 		echo "Enter your Last name:- \n";
 		//var lname will hold user last name

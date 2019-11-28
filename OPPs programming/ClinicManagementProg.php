@@ -200,7 +200,7 @@ function clinicMgmt($file)
                 clinicMgmt($file);
             else
                 $file[$i] = edit($file[$i]);
-            addressbkmenu($file);
+                clinicMgmt($file);
             break;
         case '3':
             OPPsProgramLogic::delete($addressBook);
