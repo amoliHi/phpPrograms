@@ -155,7 +155,7 @@ function printStockList(int $s = 0)
         echo "No | Stock Name   | Share Price    | Available\n";
         $i = 0;
         foreach ($list as $key) {
-            echo sprintf("%-1u. | %-10s   | Rs %-12u| %-9u", ++$i, $key->name, $key->price, $key->quantity) . "\n";
+ echo sprintf("%-1u. | %-10s   | Rs %-12u| %-9u", ++$i, $key->name, $key->price, $key->quantity) . "\n";
         }
     }
     return $list;

@@ -243,6 +243,6 @@ function clinicMgmt($file)
 $file = json_decode(file_get_contents("CliniqueMgmt.txt"));
 clinicMgmt($file);
 ## Specimen 
-/**
- * @var integer
- */
+// /**
+//  * @var integer
+//  */
