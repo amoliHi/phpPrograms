@@ -168,7 +168,7 @@ class OPPsProgramLogic
 	function stockReport()
 	{
 		echo "Enter total number of Stocks : ";
-		//var st for storing total number of stock
+		//@var integer st for storing total number of stock
 		$st = readline();
 		//loop for traversing and taking stock data from user
 		for ($i = 0; $i < $st; $i++) {
