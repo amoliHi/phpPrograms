@@ -1,4 +1,4 @@
-<?php
+
 /**
  * program to read in Stock Names, Number of Share, Share Price.
  * Print a Stock Report with total value of each Stock and the total value of Stock.
@@ -152,7 +152,7 @@ function run()
 //function to run the class
 run();
 /******************************************************************************* */
-
+<?php
 /**
  * function to create person objest by askin value from console
  * @param addressbook  the array of addressbook to store created person object
@@ -350,5 +350,5 @@ function menu($addressBook)
     }
 }
 $arr = json_decode(file_get_contents("AddressBook.json"));
-menu($arr);
-?>
+print_r($arr);
+// menu($arr);
