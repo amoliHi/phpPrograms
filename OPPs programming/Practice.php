@@ -294,14 +294,12 @@ function menu($addressBook)
         case '2':
             $k = 2;
             while (($i = search($addressBook)) === -1) {
-                var_dump($i);
                 echo "No enteries Found\nenter 1 to exit to MENU or Else to search again\n";
                 fscanf(STDIN, "%s\n", $k);
                 if ($k == 1) {
                     break;
                 }
             }
-            // /var_dump($i);
             if ($k == 1) {
                 menu($addressBook);
             } else {
