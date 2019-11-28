@@ -116,29 +116,29 @@ class OPPsProgramLogic
 		//@var $str $fname hold user first name
 		$fname = Utility::getString();
 		echo "Enter your Last name:- \n";
-		//var lname will hold user last name
+		//@var $str $lname hold user last name
 		$lname = Utility::getString();
 		echo "Enter your mobile no:- \n";
-		//var mobile will hold user mobile number
+		//@var int $mobile hold user mobile number
 		$mobile = Utility::getInt();
 		OPPsProgramLogic::regexReplace($message, $fname, $lname, $mobile);
 	}
 
 	/**
-	 * Function to add stock to old portfolio 
+	 * Function to add stock data to old portfolio 
 	 * 
 	 * @return void
 	 */
 	function add()
 	{
 		echo "Adding new Stock data to inventory.... \n";
-		//var portfolio will hold decoded json string
+		//@var mixed $portfolio hold decoded json string
 		$portfolio = json_decode(file_get_contents("stock.json"));
 		OPPsProgramLogic::portfolio($portfolio);
 	}
 
 	/**
-	 * Function to add stock data to old portfolio 
+	 * Function to add stock data to portfolio 
 	 * 
 	 * @param portfolio -stock inventory array object containing Stock data 
 	 * @return void
@@ -168,8 +168,8 @@ class OPPsProgramLogic
 	function stockReport()
 	{
 		echo "Enter total number of Stocks : ";
-		//@var integer st for storing total number of stock
-		$st = readline();
+		//@var int $st for storing total number of stock
+		$st = Utility::getInt();
 		//loop for traversing and taking stock data from user
 		for ($i = 0; $i < $st; $i++) {
 			echo "Enter Stock name :";
@@ -192,7 +192,7 @@ class OPPsProgramLogic
 	 */
 	function putJson($arr)
 	{
-		//encoding array to json string
+		//@var string|bool $json hold encoded array in the form of json string
 		$json =  json_encode($arr);
 		//storing json string into the files
 		file_put_contents("stock.json", $json);
