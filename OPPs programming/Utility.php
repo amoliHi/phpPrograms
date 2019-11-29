@@ -20,7 +20,7 @@ class Utility
     }
 
     /**
-     * getInt() function - takes integer as an input form user.
+     * Function to takes integer as an input form user.
      * 
      * @return integer
      */
@@ -71,11 +71,11 @@ class Utility
 */
 class Inventory
 {
-    //@var name to store name of product
+    //@var string $name to store name of product
     public $name;
-    //@var name to store weight of product
+    //@var int $weight to store weight of product
     public $weight;
-    //@var name to store price of product
+    //@var int $price to store price of product
     public $price;
     /**
      * Constructor function to initialize the object
@@ -98,11 +98,11 @@ class Inventory
 class Stock
 {
 
-    //var name to store name of product
+    //@var string $name to store name of produc
     public $name;
-    //var price to store price of product
+    //@var int $price to store price of product
     public $price;
-    //var quantity to store quantity of product
+    //@var int $quantity to store quantity of product
     public $quantity;
 
     /**
@@ -125,9 +125,9 @@ class Stock
  */
 class card
 {
-    //var suit to store category of card
+    //@var stirng $suit to store category of card
     public $suit;
-    //var rank to store rank of card
+    //var int $rank to store rank of card
     public $rank;
 
     /**
