@@ -11,8 +11,6 @@ class Doctor
     public $id;
     //@var special to store specialization of Doctor
     public $special;
-    //@var avail to store availability of Doctor
-    public $avail;
     //@var am to store morning availability time of Doctor
     public $am;
     //@var pm to store evening availability time of Doctor
@@ -43,6 +41,7 @@ class Patient
 function detailentry($file)
 {
     echo "Enter D to enter details of Doctor.\nEnter P to enter details of Patient.\n";
+    //@var $str $input hold user input
     $input = Utility::getString();
     if ($input == "D")
         createDoctor($file);
@@ -150,12 +149,53 @@ function createPatient($file)
     Utility::putJsonin($patient_arr, $file);
 }
 
+/**
+ * Function to print doctor's details from Clinique management Book
+ * 
+ * @param $arr array containing the data of doctor
+ */
+function printDoctor($arr)
+{
+    // printing clinique management book
+    foreach ($arr as $doctor) {
+        echo sprintf("Doctor's Name : %s \nId. no. : %u\nSpecialist of : %s\nTimings:-\nMorning from : %u am\nTill Evenimg : %u\n\n",
+            $doctor->name,
+            $doctor->id,
+            $doctor->special,
+            $doctor->am,
+            $doctor->pm,
+        );
+    }
+}
+
+/**
+ * Function to print doctor's details from Clinique management Book
+ * 
+ * @param $arr array containing the data of doctor
+ */
+function printPatient($arr)
+{
+    // printing clinique management book
+    foreach ($arr as $patient) {
+        echo sprintf("Patients's Name : %s \nId. no. : %u\Mob. no. : %u\nnAge : %u\n\n",
+            $patient->name,
+            $patient->id,
+            $patient->mob,
+            $patient->age,
+        );
+    }
+}
 
 
+/**
+	 * Driver function of clinique management program
+	 * 
+	 * @param $file array containing the person object/details
+	 */
 function clinicMgmt($file)
 {
     echo "\n ....Clinique Management Book....\n\nEnter 1 to add Person Data.\nEnter 2 to search.\n",
-       
+
         "\nEnter any other number to save and exit.\n";
     $ch = Utility::getInt();
     switch ($ch) {
@@ -164,20 +204,33 @@ function clinicMgmt($file)
             clinicMgmt($file);
             break;
         case '2':
-            $i = search($addressBook);
+        echo "Enter 1 to search for Doctor\nEnter 2 to search for Patient.\n";
+        $ch = Utility::getInt();
+        if($ch==1){
+            $i = searchdoctor($file);
             if ($i > -1) {
                 $arr = [];
-                $arr[] = $addressBook[$i];
+                $arr[] = $file[$i];
                 OPPsProgramLogic::printBook($arr);
             }
             echo "\n";
             fscanf(STDIN, "%s\n");
-            OPPsProgramLogic::addressbkmenu($addressBook);
+            OPPsProgramLogic::addressbkmenu($file);
             break;
+        }
+        elseif($ch==2){
+            $i = searchPatient($file);
+            if ($i > -1) {
+                $arr = [];
+                $arr[] = $file[$i];
+                OPPsProgramLogic::printBook($arr);
+            }
+            echo "\n";
+            fscanf(STDIN, "%s\n");
+            OPPsProgramLogic::addressbkmenu($file);
+            break;
+        }  
         default:
-            echo "Enter 1 to save ";
-            if (Utility::getInt() == 1)
-                OPPsProgramLogic::save($addressBook);
             break;
     }
 }
