@@ -57,10 +57,10 @@ function detailentry($file)
 
 
 /**
- * Function to search doctors from the list
+ * Function to search doctor's from the list
  *
- * @param  mixed $arr
- * @return 
+ * @param $arr hold doctor's data in form of array
+ * @return int $i - index of the searched item or -1 if not found  
  */
 function searchdoctor($arr)
 {
@@ -79,10 +79,10 @@ function searchdoctor($arr)
 }
 
 /**
- * Undocumented function
+ * Function to search patient data in array
  *
- * @param [mixed] $arr
- * @return mixed 
+ * @param $arr hold patient data in form of array
+ * @return int $i - index of the searched item or -1 if not found 
  */
 function searchPatient($arr)
 {
@@ -179,8 +179,8 @@ function edit($person)
 
 function clinicMgmt($file)
 {
-    echo "\n ....Clinique Management Book....\n\nEnter 1 to add Person Data.\nEnter 2 to Edit a person's detail.",
-        "\nEnter 3 to Delete a person.\nEnter 4 to Sort and Display.\nEnter 5 to search.",
+    echo "\n ....Clinique Management Book....\n\nEnter 1 to add Person Data.\nEnter 2 to search.\n",
+       
         "\nEnter any other number to save and exit.\n";
     $ch = Utility::getInt();
     switch ($ch) {
@@ -189,39 +189,7 @@ function clinicMgmt($file)
             clinicMgmt($file);
             break;
         case '2':
-            $k = 2;
-            while (($i = search($file)) === -1) {
-                echo "No enteries Found.\nEnter 1 to exit to Menu or Else to search again\n";
-                fscanf(STDIN, "%s\n", $k);
-                if ($k == 1)
-                    break;
-            }
-            if ($k == 1)
-                clinicMgmt($file);
-            else
-                $file[$i] = edit($file[$i]);
-                clinicMgmt($file);
-            break;
-        case '3':
-            OPPsProgramLogic::delete($addressBook);
-            OPPsProgramLogic::addressbkmenu($addressBook);
-            break;
-        case '4':
-            echo "Enter 1 to sort by Name\nEnter 2 to sort by Zip\nElse to Menu";
-            $c = Utility::getInt();
-            if ($c == 1) {
-                OPPsProgramLogic::sortBook($addressBook, "fname");
-                OPPsProgramLogic::printBook($addressBook);
-            } else if ($c == 2) {
-                OPPsProgramLogic::sortBook($addressBook, "zip");
-                OPPsProgramLogic::printBook($addressBook);
-            } else
-                OPPsProgramLogic::addressbkmenu($addressBook);
-            fscanf(STDIN, "%s\n");
-            OPPsProgramLogic::addressbkmenu($addressBook);
-            break;
-        case '5':
-            $i = OPPsProgramLogic::search($addressBook);
+            $i = search($addressBook);
             if ($i > -1) {
                 $arr = [];
                 $arr[] = $addressBook[$i];
@@ -241,7 +209,3 @@ function clinicMgmt($file)
 
 $file = json_decode(file_get_contents("CliniqueMgmt.txt"));
 clinicMgmt($file);
-## Specimen 
-/**
- * @var integer
- */
