@@ -11,8 +11,7 @@
  * d. Logic ­> Get JSON Object in Java or NSDictionary in iOS. Create Inventory
  * Object from JSON. Calculate the value for every Inventory.
  * e. O/P ­> Create the JSON from Inventory Object and output the JSON String
- * **********************************************************************************
- */
+ ************************************************************************************/
 
 //require functions of OPPsProgramLogic class
 include "OPPsProgramLogic.php";
