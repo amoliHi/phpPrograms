@@ -78,6 +78,7 @@ function distribute($deck)
         for ($j = 0; $j < 9; $j++) {
             $r = rand(0, 3);
             $c = rand(0, count($deck[$r]) - 1);
+            print_r($deck[$r]);
             $players[$i][$j] = $deck[$r][$c];
             array_splice($deck[$r], $c, 1);
         }

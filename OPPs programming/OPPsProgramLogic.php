@@ -428,26 +428,13 @@ class OPPsProgramLogic
 				break;
 			case '2':
 				OPPsProgramLogic::menuchoice2($addressBookarr);
-
 				break;
 			case '3':
 				OPPsProgramLogic::delete($addressBookarr);
 				OPPsProgramLogic::addressbkmenu($addressBookarr);
 				break;
 			case '4':
-				echo "Enter 1 to sort by Name\nEnter 2 to sort by Zip\nElse to Menu";
-				$c = Utility::getInt();
-				if ($c == 1) {
-					OPPsProgramLogic::sortBook($addressBookarr, "fname");
-					OPPsProgramLogic::printBook($addressBookarr);
-				} else if ($c == 2) {
-					OPPsProgramLogic::sortBook($addressBookarr, "zip");
-					OPPsProgramLogic::printBook($addressBookarr);
-				} else
-					OPPsProgramLogic::addressbkmenu($addressBookarr);
-				echo "Press Enter to proceed";
-				fscanf(STDIN, "%s\n");
-				OPPsProgramLogic::addressbkmenu($addressBookarr);
+				OPPsProgramLogic::menuchoice4($addressBookarr);
 				break;
 			case '5':
 				$i = OPPsProgramLogic::search($addressBookarr);
@@ -468,8 +455,15 @@ class OPPsProgramLogic
 		}
 	}
 
+	/**
+	 * Function to edit a person data in Addressbook
+	 *
+	 * @param $addressBookarr array containing person data
+	 * @return void
+	 */
 	function menuchoice2($addressBookarr)
 	{
+		//@var int $k 
 		$k = 2;
 		while (($i = OPPsProgramLogic::search($addressBookarr)) === -1) {
 			echo "No enteries Found\nenter 1 to exit to Menu or Else to search again\n";
@@ -481,6 +475,30 @@ class OPPsProgramLogic
 			OPPsProgramLogic::addressbkmenu($addressBookarr);
 		else
 			$addressBookarr[$i] = OPPsProgramLogic::edit($addressBookarr[$i]);
+		OPPsProgramLogic::addressbkmenu($addressBookarr);
+	}
+
+	/**
+	 * Function to sort and display data of a person from Addressbook
+	 *
+	 * @param $addressBookarr array containing person data
+	 * @return void
+	 */
+	function menuchoice4($addressBookarr)
+	{
+		echo "Enter 1 to sort by Name\nEnter 2 to sort by Zip\nElse to Menu";
+		//@var int $c hold user input
+		$c = Utility::getInt();
+		if ($c == 1) {
+			OPPsProgramLogic::sortBook($addressBookarr, "fname");
+			OPPsProgramLogic::printBook($addressBookarr);
+		} else if ($c == 2) {
+			OPPsProgramLogic::sortBook($addressBookarr, "zip");
+			OPPsProgramLogic::printBook($addressBookarr);
+		} else
+			OPPsProgramLogic::addressbkmenu($addressBookarr);
+		echo "Press Enter to proceed";
+		fscanf(STDIN, "%s\n");
 		OPPsProgramLogic::addressbkmenu($addressBookarr);
 	}
 
