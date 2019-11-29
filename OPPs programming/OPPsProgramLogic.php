@@ -420,7 +420,7 @@ class OPPsProgramLogic
 		echo "\n ..Address Book..\n\nEnter 1 to add person.\nEnter 2 to Edit a person.",
 			"\nEnter 3 to Delete a person.\nEnter 4 to Sort and Display.\nEnter 5 to search.",
 			"\nEnter any other number to save and exit.\n";
-			//@var int $ch holds user entered input
+		//@var int $ch holds user entered input
 		$ch = Utility::getInt();
 		switch ($ch) {
 			case '1':
@@ -564,7 +564,7 @@ class OPPsProgramLogic
 	 */
 	function distribute($deck)
 	{
-		//creating empty array for storing distributed cards
+		//@var array $players empty array for storing distributed cards
 		$players = [];
 		//logic for distributing cards between 4 players
 		//4 players will have 9 cards of different suits and rank from deck
@@ -593,9 +593,9 @@ class OPPsProgramLogic
 	{
 		for ($k = 0; $k < 4; $k++) {
 			for ($i = 1; $i < count($player[$k]); $i++) {
-				// getting value for back element
+				//@var int|float $j- getting value for back element
 				$j = ($i - 1);
-				//saving it in temperary variable;
+				//@var mixed $temp - saving it in temperary variable
 				$temp = $player[$k][$i];
 				while ($j >= 0 && $player[$k][$j]->rank >= $temp->rank) {
 					$player[$k][$j + 1] = $player[$k][$j];
@@ -614,9 +614,10 @@ class OPPsProgramLogic
 	 */
 	function displayCards($player)
 	{
-		//array to contain special rank cards
+		//@var string[] $special - array to contain special rank cards
 		$special = ["Jack", "Queen", "King", "Ace"];
 		for ($i = 0; $i < count($player); $i++) {
+			//@var string $print
 			$print = "{";
 			echo "\n\nPlayer " . ($i + 1) . ":";
 			for ($j = 0; $j < count($player[$i]); $j++) {
@@ -625,6 +626,7 @@ class OPPsProgramLogic
 				else
 					$print .= $player[$i][$j]->rank . " of " . $player[$i][$j]->suit . ",";
 			}
+			//@var string|bool $print
 			$print = substr($print, 0, -1);
 			echo $print . "}";
 		}
@@ -638,7 +640,7 @@ class OPPsProgramLogic
 	{
 		echo "Deck of cards created.\nPress Enter the proceed.\n";
 		fscanf(STDIN, "%s\n");
-		//@var deck will contain deck in the form of 2d array
+		//@var $deck will contain deck of cards in the form of 2d array
 		$deck = OPPsProgramLogic::createDeck();
 		echo "Press Enter to shuffle the deck. \n";
 		fscanf(STDIN, "%s\n");
