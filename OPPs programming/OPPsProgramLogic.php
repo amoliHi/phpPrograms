@@ -467,7 +467,7 @@ class OPPsProgramLogic
 		//@var int $k 
 		$k = 2;
 		while (($i = OPPsProgramLogic::search($addressBookarr)) === -1) {
-			echo "No enteries Found\nenter 1 to exit to Menu or Else to search again\n";
+			echo "No enteries Found\nEnter 1 to exit to Menu or Else to search again\n";
 			fscanf(STDIN, "%s\n", $k);
 			if ($k == 1)
 				break;
