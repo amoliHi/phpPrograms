@@ -420,6 +420,7 @@ class OPPsProgramLogic
 		echo "\n ..Address Book..\n\nEnter 1 to add person.\nEnter 2 to Edit a person.",
 			"\nEnter 3 to Delete a person.\nEnter 4 to Sort and Display.\nEnter 5 to search.",
 			"\nEnter any other number to save and exit.\n";
+			//@var int $ch holds user entered input
 		$ch = Utility::getInt();
 		switch ($ch) {
 			case '1':
@@ -509,11 +510,11 @@ class OPPsProgramLogic
 	 */
 	function createDeck()
 	{
-		// number of suits in the deck
+		//@var string[] $suits - suits in deck
 		$suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
-		//number of ranks in the deck
+		//@var int[] $rank - ranks in deck
 		$rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-		//creating an empty deck array
+		//@var array $deck an empty deck array
 		$deck = [];
 		for ($i = 0; $i < count($suits); $i++) {
 			for ($j = 0; $j < count($rank); $j++) {
