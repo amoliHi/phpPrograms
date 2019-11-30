@@ -29,3 +29,8 @@ class Singleton {
 $object1 = Singleton::getInstance();
 $object2 = Singleton::getInstance();
 $object3 = Singleton::getInstance();
+var_dump($object1);
+var_dump($object2);
+var_dump($object3);
+
+
