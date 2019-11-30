@@ -365,8 +365,7 @@ class OPPsProgramLogic
 	{
 		// printing addressbook
 		foreach ($arr as $person) {
-			echo sprintf(
-				"%s %s\n%s\n%s, %s\nZip - %u\nMobile- %u\n\n",
+			echo sprintf("%s %s\n%s\n%s, %s\nZip - %u\nMobile- %u\n\n",
 				$person->fname,
 				$person->lname,
 				$person->address,

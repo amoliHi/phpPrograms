@@ -158,7 +158,8 @@ function printDoctor($arr)
 {
     // printing clinique management book
     foreach ($arr as $doctor) {
-        echo sprintf("Doctor's Name : %s \nId. no. : %u\nSpecialist of : %s\nTimings:-\nMorning from : %u am\nTill Evenimg : %u\n\n",
+        echo sprintf(
+            "Doctor's Name : %s \nId. no. : %u\nSpecialist of : %s\nTimings:-\nMorning from : %u am\nTill Evenimg : %u\n\n",
             $doctor->name,
             $doctor->id,
             $doctor->special,
@@ -177,7 +178,8 @@ function printPatient($arr)
 {
     // printing clinique management book
     foreach ($arr as $patient) {
-        echo sprintf("Patients's Name : %s \nId. no. : %u\Mob. no. : %u\nnAge : %u\n\n",
+        echo sprintf(
+            "Patients's Name : %s \nId. no. : %u\Mob. no. : %u\nnAge : %u\n\n",
             $patient->name,
             $patient->id,
             $patient->mob,
@@ -188,10 +190,10 @@ function printPatient($arr)
 
 
 /**
-	 * Driver function of clinique management program
-	 * 
-	 * @param $file array containing the person object/details
-	 */
+ * Driver function of clinique management program
+ * 
+ * @param $file array containing the person object/details
+ */
 function clinicMgmt($file)
 {
     echo "\n ....Clinique Management Book....\n\nEnter 1 to add Person Data.\nEnter 2 to search.\n",
@@ -204,32 +206,31 @@ function clinicMgmt($file)
             clinicMgmt($file);
             break;
         case '2':
-        echo "Enter 1 to search for Doctor\nEnter 2 to search for Patient.\n";
-        $ch = Utility::getInt();
-        if($ch==1){
-            $i = searchdoctor($file);
-            if ($i > -1) {
-                $arr = [];
-                $arr[] = $file[$i];
-                OPPsProgramLogic::printBook($arr);
+            echo "Enter 1 to search for Doctor\nEnter 2 to search for Patient.\n";
+            $ch = Utility::getInt();
+            if ($ch == 1) {
+                $i = searchdoctor($file);
+                if ($i > -1) {
+                    $arr = [];
+                    $arr[] = $file[$i];
+                    OPPsProgramLogic::printBook($arr);
+                }
+                echo "\n";
+                fscanf(STDIN, "%s\n");
+                OPPsProgramLogic::addressbkmenu($file);
+                break;
+            } elseif ($ch == 2) {
+                $i = searchPatient($file);
+                if ($i > -1) {
+                    $arr = [];
+                    $arr[] = $file[$i];
+                    OPPsProgramLogic::printBook($arr);
+                }
+                echo "\n";
+                fscanf(STDIN, "%s\n");
+                OPPsProgramLogic::addressbkmenu($file);
+                break;
             }
-            echo "\n";
-            fscanf(STDIN, "%s\n");
-            OPPsProgramLogic::addressbkmenu($file);
-            break;
-        }
-        elseif($ch==2){
-            $i = searchPatient($file);
-            if ($i > -1) {
-                $arr = [];
-                $arr[] = $file[$i];
-                OPPsProgramLogic::printBook($arr);
-            }
-            echo "\n";
-            fscanf(STDIN, "%s\n");
-            OPPsProgramLogic::addressbkmenu($file);
-            break;
-        }  
         default:
             break;
     }
