@@ -7,9 +7,9 @@ class ComputerFactory
 {
     public static function getComputer($type, $ram, $hdd, $cpu)
     {
-        $res = strcasecmp($type, "PC");
-        if ($res === 0) return new PC($ram, $hdd, $cpu);
-        else if ($res === 0) return new Server($ram, $hdd, $cpu);
+        if ($type == "PC") return new PC($ram, $hdd, $cpu);
+        else if ($type == "Server") return new Server($ram, $hdd, $cpu);
+        else 
         return null;
     }
 }

@@ -8,7 +8,7 @@ abstract class Computer {
 	
 	//@Override
 	public function toString(){
-		return "RAM= "+this.getRAM()+", HDD="+this.getHDD()+", CPU="+this.getCPU();
+		return "RAM= " . $this->getRAM().", HDD= ".$this->getHDD().", CPU= ".$this->getCPU();
 	}
 }
 
