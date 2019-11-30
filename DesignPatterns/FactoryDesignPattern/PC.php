@@ -1,5 +1,6 @@
 <?php
 
+
 class PC
 {
 	private $ram;
