@@ -1,28 +1,93 @@
 <?php
 
-// Add to the discount during the downturn or if the stock of cars is too large.
-function cupounGenerator($car) 
-{
-  $discount = 0;   
-  $isHighSeason = false;  
-  $bigStock = true;
+/************************ */
+// implements the interface for BMW.
+class bmwCouponGenerator implements carCouponGenerator {
+    private $discount = 0;
+    private $isHighSeason = false;
+    private $bigStock = true;
       
+    public function addSeasonDiscount()
+    {
+      if(!$this->isHighSeason) return $this->discount += 5;
     
+      return $this->discount +=0;
+    }
+      
+    public function addStockDiscount()
+    {
+      if($this->bigStock) return $this->discount += 7;
+        
+      return $this->discount +=0;
+    }
+  }
+  /*********** */
+  // implements the interface for Mercedes.
+class mercedesCouponGenerator implements carCouponGenerator {
+  private $discount = 0;
+  private $isHighSeason = false;
+  private $bigStock = true;
+    
+  public function addSeasonDiscount()
+  {
+    if(!$this->isHighSeason) return $this->discount += 4;
+  
+    return $this->discount +=0;
+  }
+    
+  public function addStockDiscount()
+  {
+    if($this->bigStock) return $this->discount += 10;
+  
+    return $this->discount +=0;
+  }
+}
+/******************* */
+// Create object from the alternative classes.
+function couponObjectGenerator($car)
+{
   if($car == "bmw")
   {
-    if(!$isHighSeason) {$discount += 5;}
-      
-    if($bigStock) {$discount += 7;} 
+    $carObj = new bmwCouponGenerator;
   }
   else if($car == "mercedes")
   {
-    if(!$isHighSeason) {$discount += 4;}
-   
-    if($bigStock) {$discount += 10;}
+    $carObj = new mercedesCouponGenerator;
   }
       
-  return $cupoun = "Get {$discount}% off the price of your new car.";
+  return $carObj;
 }
-    
+/**************** */
+// The client class generates coupon from the object of choice.
+class couponGenerator {
+  private $carCoupon;
+  
+  // Get only objects that belong to the interface.  
+  public function __construct(carCouponGenerator $carCoupon)
+  {
+    $this->carCoupon = $carCoupon;
+  }
    
-echo cupounGenerator("bmw");
+  // Use the object's methods to generate the coupon. 
+  public function getCoupon()
+  {
+    $discount = $this->carCoupon->addSeasonDiscount();
+    $discount = $this->carCoupon->addStockDiscount();
+    
+    return $coupon = "Get {$discount}% off the price of your new car.";
+  }
+}
+/**************** */
+// Test the code.
+$car = "bmw";
+$carObj = couponObjectGenerator($car);
+$couponGenerator = new couponGenerator($carObj);
+echo $couponGenerator->getCoupon();
+  
+echo "\n";
+    
+$car = "mercedes";
+$carObj = couponObjectGenerator($car);
+$couponGenerator = new couponGenerator($carObj);
+echo $couponGenerator->getCoupon();
+echo "\n";
