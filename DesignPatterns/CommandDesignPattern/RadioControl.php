@@ -1,6 +1,4 @@
 <?php
-include "RadioControl.php";
-
 // Receiver
 class RadioControl {
     public function turnOn() {
