@@ -1,64 +1,67 @@
 <?php
 
-abstract class BookPrototype {
-    protected $title;
-    protected $topic;
-    abstract function __clone();
-    function getTitle() {
-        return $this->title;
+class Employees
+{
+    private $empList;
+    public function __construct()
+    {
+        $param = func_get_args();
+        $paraNum = func_num_args();
+        if (method_exists($this,$f = '__construct'.($paraNum+1))) 
+        {
+            call_user_func_array(array($this,$f),$param);
+        }
+    } 
+   
+    public function __construct1()
+    {
+        $this->empList = [];
     }
-    function setTitle($titleIn) {
-        $this->title = $titleIn;
+    public function __construct2($list)
+    {
+        $this->empList = $list;
     }
-    function getTopic() {
-        return $this->topic;
+    public function loadData()
+    {
+        array_push($this->empList, "akku");
+        array_push($this->empList, "chirag");
+        array_push($this->empList, "deepu");
+        array_push($this->empList, "nishant");
+        array_push($this->empList, "sarthak");
+    }
+    public function getList()
+    {
+        return $this->empList;
+    }
+    public function clone()
+    {
+        $temp = [];
+        foreach ($this->getList() as $key) {
+            array_push($temp,$key);
+        }
+        //$obj = new Employees();
+        return new Employees($temp);
+        //$obj->Employeess($temp);
     }
 }
-
-class PHPBookPrototype extends BookPrototype {
-    function __construct() {
-        $this->topic = 'PHP';
-    }
-    function __clone() {
+class Prototype {
+    public function main()
+    {
+        $emp = new Employees();
+        //$emp->Employeess();
+        $emp->loadData();
+        $empNew = $emp->clone();
+        $empNew2 = $emp->clone();
+        //print_r($empNew);
+        $list = $empNew->getList();
+        array_push($list,"abc");
+        $list1 = $empNew2->getList();
+        unset($list1[array_search("akku",$list1)]);
+        echo "emps List: ";
+        print_r($emp->getList()) ;
+        echo "empsNew List: ";print_r($list);
+        echo "empsNew1 List: ";print_r($list1);
     }
 }
-
-class SQLBookPrototype extends BookPrototype {
-    function __construct() {
-        $this->topic = 'SQL';
-    }
-    function __clone() {
-    }
-}
- 
-  writeln('BEGIN TESTING PROTOTYPE PATTERN');
-  writeln('');
-
-  $phpProto = new PHPBookPrototype();
-  $sqlProto = new SQLBookPrototype();
-
-  $book1 = clone $sqlProto;
-  $book1->setTitle('SQL For Cats');
-  writeln('Book 1 topic: '.$book1->getTopic());
-  writeln('Book 1 title: '.$book1->getTitle());
-  writeln('');
-
-  $book2 = clone $phpProto;
-  $book2->setTitle('OReilly Learning PHP 5');
-  writeln('Book 2 topic: '.$book2->getTopic());
-  writeln('Book 2 title: '.$book2->getTitle());
-  writeln('');
-
-  $book3 = clone $sqlProto;
-  $book3->setTitle('OReilly Learning SQL');
-  writeln('Book 3 topic: '.$book3->getTopic());
-  writeln('Book 3 title: '.$book3->getTitle());
-  writeln('');
-
-  writeln('END TESTING PROTOTYPE PATTERN');
-
-  function writeln($line_in) {
-    echo $line_in."<br/>";
-  }
-
+Prototype::main();
 ?>
