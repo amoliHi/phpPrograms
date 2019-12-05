@@ -19,6 +19,7 @@ class TurnOnRadio implements RadioCommand
      * Constructor function to initialize @var $radioControl
      *
      * @param RadioControl $radioControl object of RadioControl
+     * @return void
      */
     public function __construct(RadioControl $radioControl)
     {
