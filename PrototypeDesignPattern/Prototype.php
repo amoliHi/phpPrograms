@@ -1,67 +1,40 @@
 <?php
 
-class Employees
+//require functions of Employees class 
+include "Employees.php";
+
+/**
+ * Prototype class to create multiple Employee Object
+ * using clone technique
+ */
+class Prototype
 {
-    private $empList;
-    public function __construct()
-    {
-        $param = func_get_args();
-        $paraNum = func_num_args();
-        if (method_exists($this,$f = '__construct'.($paraNum+1))) 
-        {
-            call_user_func_array(array($this,$f),$param);
-        }
-    } 
-   
-    public function __construct1()
-    {
-        $this->empList = [];
-    }
-    public function __construct2($list)
-    {
-        $this->empList = $list;
-    }
-    public function loadData()
-    {
-        array_push($this->empList, "akku");
-        array_push($this->empList, "chirag");
-        array_push($this->empList, "deepu");
-        array_push($this->empList, "nishant");
-        array_push($this->empList, "sarthak");
-    }
-    public function getList()
-    {
-        return $this->empList;
-    }
-    public function clone()
-    {
-        $temp = [];
-        foreach ($this->getList() as $key) {
-            array_push($temp,$key);
-        }
-        //$obj = new Employees();
-        return new Employees($temp);
-        //$obj->Employeess($temp);
-    }
-}
-class Prototype {
+    /**
+     * Driver function
+     *
+     * @return void
+     */
     public function main()
     {
         $emp = new Employees();
-        //$emp->Employeess();
         $emp->loadData();
+        //@var $empNew hold cloned object created of Employees class
         $empNew = $emp->clone();
+        //@var $empNew2 hold cloned object created of Employees class
         $empNew2 = $emp->clone();
-        //print_r($empNew);
         $list = $empNew->getList();
-        array_push($list,"abc");
+        //adding new name in $list array 
+        array_push($list, "Kamal");
         $list1 = $empNew2->getList();
-        unset($list1[array_search("akku",$list1)]);
+        unset($list1[array_search("akku", $list1)]);
+        //displaying employees list
         echo "emps List: ";
-        print_r($emp->getList()) ;
-        echo "empsNew List: ";print_r($list);
-        echo "empsNew1 List: ";print_r($list1);
+        print_r($emp->getList());
+        //displaying modified employees list
+        echo "empsNew List: ";
+        print_r($list);
+        //displaying modified employees list
+        echo "empsNew1 List: ";
+        print_r($list1);
     }
 }
-Prototype::main();
-?>
