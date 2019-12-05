@@ -18,7 +18,7 @@ class bmwCouponGenerator implements carCouponGenerator
     /**
      * Function to add Seasonal Discount
      *
-     * @return int discount value
+     * @return [int] discount value
      */
     public function addSeasonDiscount()
     {
@@ -30,7 +30,7 @@ class bmwCouponGenerator implements carCouponGenerator
     /**
      * Function to add Stock Discount
      *
-     * @return int discount value
+     * @return [int] discount value
      */
     public function addStockDiscount()
     {

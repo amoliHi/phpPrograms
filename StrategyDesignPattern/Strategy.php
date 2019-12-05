@@ -1,8 +1,15 @@
 <?php
 
+//require functions in couponGenerator file 
 include "couponGenerator.php";
 
-// Create object from the alternative classes.
+/**
+ * Function to create object from the alternative classes.
+ *
+ * @param [string] $car
+ * @return $carObj object of either bmw or mercedes 
+ * as per the parameter passed
+ */
 function couponObjectGenerator($car)
 {
   if ($car == "bmw") {
@@ -14,7 +21,7 @@ function couponObjectGenerator($car)
   return $carObj;
 }
 
-// Test the code.
+//code testing logic
 $car = "bmw";
 $carObj = couponObjectGenerator($car);
 $couponGenerator = new couponGenerator($carObj);

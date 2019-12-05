@@ -5,24 +5,35 @@ include "bmwCouponGenerator.php";
 //require functions in mercedesCouponGenerator file 
 include "mercedesCouponGenerator.php";
 
-// The client class generates coupon from the object of choice.
+/**
+ * couponGenerator class to generates coupon from the object of choice.
+ */
 class couponGenerator
 {
-  private $carCoupon;
+    //@var $carCoupon
+    private $carCoupon;
 
-  // Get only objects that belong to the interface.  
-  public function __construct(carCouponGenerator $carCoupon)
-  {
-    $this->carCoupon = $carCoupon;
-  }
+    /**
+     * Constructor to initialize couponGenerator class object
+     * Get only objects that belong to the interface.
+     *
+     * @param carCouponGenerator $carCoupon
+     */
+    public function __construct(carCouponGenerator $carCoupon)
+    {
+        $this->carCoupon = $carCoupon;
+    }
 
-  // Use the object's methods to generate the coupon. 
-  public function getCoupon()
-  {
-    $discount = $this->carCoupon->addSeasonDiscount();
-    $discount = $this->carCoupon->addStockDiscount();
+    /**
+     * Function will use the object's methods to generate the coupon.
+     *
+     * @return [string] $coupon
+     */
+    public function getCoupon()
+    {
+        $discount = $this->carCoupon->addSeasonDiscount();
+        $discount = $this->carCoupon->addStockDiscount();
 
-    return $coupon = "Get {$discount}% off the price of your new car.";
-  }
+        return $coupon = "Get {$discount}% off the price of your new car.";
+    }
 }
-
